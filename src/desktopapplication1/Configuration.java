@@ -90,9 +90,41 @@ public class Configuration {
     public void setPort(String port) {
         this.port = port;
     }
+
+    public String getFileLocation() {
+        return fileLocation;
+    }
+
+    public void setFileLocation(String fileLocation) {
+        this.fileLocation = fileLocation;
+        
+        //
+        try {
+            Properties configFile = new Properties();
+            configFile.load(new FileInputStream(permanentFL));
+            //configFile.list(System.out);
+            
+            
+            configFile.put("File", getFileLocation());
+            
+            FileOutputStream out = new FileOutputStream(permanentFL);
+            
+            //configFile.save(out, "/* properties updated /*");
+            
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        
+        //
+    }
     
     private String host;
     private String port;
     private String from;
     private String pass;
+    private String fileLocation;
+    final private String permanentFL = "C:\\File_MailClient.dat";
+    
 }
