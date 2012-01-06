@@ -34,13 +34,13 @@
                   <Component id="pathPanel" alignment="0" max="32767" attributes="0"/>
                   <Component id="userInfoPanel" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="settings_Configurepop3Button" min="-2" pref="78" max="-2" attributes="0"/>
+                      <Component id="Configurepop3Button" min="-2" pref="78" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="settings_ConfigureSmtpButton" min="-2" pref="77" max="-2" attributes="0"/>
+                      <Component id="ConfigureSmtpButton" min="-2" pref="77" max="-2" attributes="0"/>
                       <EmptySpace pref="114" max="32767" attributes="0"/>
-                      <Component id="settings_cancelSettingsButton" min="-2" pref="79" max="-2" attributes="0"/>
+                      <Component id="cancelSettingsButton" min="-2" pref="79" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="settings_saveSettingsButton" min="-2" pref="73" max="-2" attributes="0"/>
+                      <Component id="saveSettingsButton" min="-2" pref="73" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -56,10 +56,10 @@
               <Component id="pathPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" max="-2" attributes="0">
-                  <Component id="settings_saveSettingsButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="settings_cancelSettingsButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="settings_Configurepop3Button" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="settings_ConfigureSmtpButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="saveSettingsButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cancelSettingsButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Configurepop3Button" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ConfigureSmtpButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -85,15 +85,15 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="settings_passwordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="settings_emailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="settings_nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="passwordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="emailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="settings_nameTextField" alignment="0" pref="333" max="32767" attributes="2"/>
-                      <Component id="settings_emailTextField" alignment="0" pref="333" max="32767" attributes="2"/>
-                      <Component id="settings_passwordPasswordField" alignment="1" pref="333" max="32767" attributes="2"/>
+                      <Component id="nameTextField" alignment="0" pref="333" max="32767" attributes="2"/>
+                      <Component id="emailTextField" alignment="0" pref="333" max="32767" attributes="2"/>
+                      <Component id="passwordPasswordField" alignment="1" pref="333" max="32767" attributes="2"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -104,18 +104,18 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="settings_nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="settings_nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="settings_emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="settings_emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="settings_passwordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="settings_passwordPasswordField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="passwordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="passwordPasswordField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -123,40 +123,40 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="settings_nameLabel">
+        <Component class="javax.swing.JLabel" name="nameLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_nameLabel.text"/>
-            <Property name="name" type="java.lang.String" value="settings_nameLabel" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="nameLabel.text"/>
+            <Property name="name" type="java.lang.String" value="nameLabel" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="settings_emailLabel">
+        <Component class="javax.swing.JLabel" name="emailLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_emailLabel.text"/>
-            <Property name="name" type="java.lang.String" value="settings_emailLabel" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="emailLabel.text"/>
+            <Property name="name" type="java.lang.String" value="emailLabel" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="settings_passwordLabel">
+        <Component class="javax.swing.JLabel" name="passwordLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_passwordLabel.text"/>
-            <Property name="name" type="java.lang.String" value="settings_passwordLabel" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="passwordLabel.text"/>
+            <Property name="name" type="java.lang.String" value="passwordLabel" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="settings_nameTextField">
+        <Component class="javax.swing.JTextField" name="nameTextField">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_nameTextField.text"/>
-            <Property name="name" type="java.lang.String" value="settings_nameTextField" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="nameTextField.text"/>
+            <Property name="name" type="java.lang.String" value="nameTextField" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="settings_emailTextField">
+        <Component class="javax.swing.JTextField" name="emailTextField">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_emailTextField.text"/>
-            <Property name="name" type="java.lang.String" value="settings_emailTextField" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="emailTextField.text"/>
+            <Property name="name" type="java.lang.String" value="emailTextField" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="settings_passwordPasswordField">
+        <Component class="javax.swing.JPasswordField" name="passwordPasswordField">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_passwordPasswordField.text"/>
-            <Property name="name" type="java.lang.String" value="settings_passwordPasswordField" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="passwordPasswordField.text"/>
+            <Property name="name" type="java.lang.String" value="passwordPasswordField" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -179,25 +179,25 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="settings_settingsLocationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="settingsLocationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="settings_contactsLocationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="settings_mailsLocationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="contactsLocationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="mailsLocationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="settings_contactsLocationTextField" alignment="0" pref="261" max="32767" attributes="0"/>
-                              <Component id="settings_settingsLocationTextField" alignment="0" pref="261" max="32767" attributes="0"/>
-                              <Component id="settings_mailsLocationTextField" alignment="0" pref="261" max="32767" attributes="0"/>
+                              <Component id="contactsLocationTextField" alignment="0" pref="261" max="32767" attributes="0"/>
+                              <Component id="settingsLocationTextField" alignment="0" pref="261" max="32767" attributes="0"/>
+                              <Component id="mailsLocationTextField" alignment="0" pref="261" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="settings_contactsLocationButton" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="settings_settingsLocationButton" alignment="0" pref="25" max="32767" attributes="1"/>
-                      <Component id="settings_mailsLocationButton" alignment="0" min="-2" pref="25" max="-2" attributes="1"/>
+                      <Component id="contactsLocationButton" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="settingsLocationButton" alignment="0" pref="25" max="32767" attributes="1"/>
+                      <Component id="mailsLocationButton" alignment="0" min="-2" pref="25" max="-2" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -208,21 +208,21 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="settings_mailsLocationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="settings_mailsLocationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="settings_mailsLocationButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="mailsLocationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="mailsLocationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="mailsLocationButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="settings_contactsLocationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="settings_contactsLocationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="settings_contactsLocationButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="contactsLocationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="contactsLocationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="contactsLocationButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="settings_settingsLocationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="settings_settingsLocationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="settings_settingsLocationButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="settingsLocationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="settingsLocationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="settingsLocationButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -230,90 +230,96 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="settings_mailsLocationLabel">
+        <Component class="javax.swing.JLabel" name="mailsLocationLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_mailsLocationLabel.text"/>
-            <Property name="name" type="java.lang.String" value="settings_mailsLocationLabel" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="mailsLocationLabel.text"/>
+            <Property name="name" type="java.lang.String" value="mailsLocationLabel" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="settings_contactsLocationLabel">
+        <Component class="javax.swing.JLabel" name="contactsLocationLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_contactsLocationLabel.text"/>
-            <Property name="name" type="java.lang.String" value="settings_contactsLocationLabel" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="contactsLocationLabel.text"/>
+            <Property name="name" type="java.lang.String" value="contactsLocationLabel" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="settings_settingsLocationLabel">
+        <Component class="javax.swing.JLabel" name="settingsLocationLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_settingsLocationLabel.text"/>
-            <Property name="name" type="java.lang.String" value="settings_settingsLocationLabel" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="settingsLocationLabel.text"/>
+            <Property name="name" type="java.lang.String" value="settingsLocationLabel" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="settings_mailsLocationTextField">
+        <Component class="javax.swing.JTextField" name="mailsLocationTextField">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_mailsLocationTextField.text"/>
-            <Property name="name" type="java.lang.String" value="settings_mailsLocationTextField" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="mailsLocationTextField.text"/>
+            <Property name="name" type="java.lang.String" value="mailsLocationTextField" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="settings_contactsLocationTextField">
+        <Component class="javax.swing.JTextField" name="contactsLocationTextField">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_contactsLocationTextField.text"/>
-            <Property name="name" type="java.lang.String" value="settings_contactsLocationTextField" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="contactsLocationTextField.text"/>
+            <Property name="name" type="java.lang.String" value="contactsLocationTextField" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="settings_settingsLocationTextField">
+        <Component class="javax.swing.JTextField" name="settingsLocationTextField">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_settingsLocationTextField.text"/>
-            <Property name="name" type="java.lang.String" value="settings_settingsLocationTextField" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="settingsLocationTextField.text"/>
+            <Property name="name" type="java.lang.String" value="settingsLocationTextField" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="settings_mailsLocationButton">
+        <Component class="javax.swing.JButton" name="mailsLocationButton">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_mailsLocationButton.text"/>
-            <Property name="name" type="java.lang.String" value="settings_mailsLocationButton" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="mailsLocationButton.text"/>
+            <Property name="name" type="java.lang.String" value="mailsLocationButton" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="settings_contactsLocationButton">
+        <Component class="javax.swing.JButton" name="contactsLocationButton">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_contactsLocationButton.text"/>
-            <Property name="name" type="java.lang.String" value="settings_contactsLocationButton" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="contactsLocationButton.text"/>
+            <Property name="name" type="java.lang.String" value="contactsLocationButton" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="settings_settingsLocationButton">
+        <Component class="javax.swing.JButton" name="settingsLocationButton">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="settings_settingsLocationButton.text"/>
-            <Property name="name" type="java.lang.String" value="settings_settingsLocationButton" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="settingsLocationButton.text"/>
+            <Property name="name" type="java.lang.String" value="settingsLocationButton" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="settings_saveSettingsButton">
+    <Component class="javax.swing.JButton" name="saveSettingsButton">
       <Properties>
-        <Property name="label" type="java.lang.String" resourceKey="settings_saveSettingsButton.label"/>
-        <Property name="name" type="java.lang.String" value="settings_saveSettingsButton" noResource="true"/>
+        <Property name="label" type="java.lang.String" resourceKey="saveSettingsButton.label"/>
+        <Property name="name" type="java.lang.String" value="saveSettingsButton" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="settings_cancelSettingsButton">
+    <Component class="javax.swing.JButton" name="cancelSettingsButton">
       <Properties>
         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
           <action class="desktopapplication1.SettingsDialog" id="cancelSettings" methodName="cancelSettings"/>
         </Property>
-        <Property name="text" type="java.lang.String" resourceKey="settings_cancelSettingsButton.text"/>
-        <Property name="name" type="java.lang.String" value="settings_cancelSettingsButton" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="cancelSettingsButton.text"/>
+        <Property name="name" type="java.lang.String" value="cancelSettingsButton" noResource="true"/>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="cancelSettingsButton.AccessibleContext.accessibleName"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JButton" name="settings_Configurepop3Button">
+    <Component class="javax.swing.JButton" name="Configurepop3Button">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="settings_Configurepop3Button.text"/>
-        <Property name="name" type="java.lang.String" value="settings_Configurepop3Button" noResource="true"/>
+        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+          <action class="desktopapplication1.SettingsDialog" id="showPOP3ConfigDialog" methodName="showPOP3ConfigDialog"/>
+        </Property>
+        <Property name="text" type="java.lang.String" resourceKey="Configurepop3Button.text"/>
+        <Property name="name" type="java.lang.String" value="Configurepop3Button" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="settings_ConfigureSmtpButton">
+    <Component class="javax.swing.JButton" name="ConfigureSmtpButton">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="settings_ConfigureSmtpButton.text"/>
-        <Property name="name" type="java.lang.String" value="settings_ConfigureSmtpButton" noResource="true"/>
+        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+          <action class="desktopapplication1.SettingsDialog" id="showSMTPConfigDialog" methodName="showSMTPConfigDialog"/>
+        </Property>
+        <Property name="text" type="java.lang.String" resourceKey="ConfigureSmtpButton.text"/>
+        <Property name="name" type="java.lang.String" value="ConfigureSmtpButton" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

@@ -12,6 +12,10 @@ package desktopapplication1;
 
 import org.jdesktop.application.Action;
 
+
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+
 /**
  *
  * @author kursat
@@ -34,26 +38,26 @@ public class SettingsDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         userInfoPanel = new javax.swing.JPanel();
-        settings_nameLabel = new javax.swing.JLabel();
-        settings_emailLabel = new javax.swing.JLabel();
-        settings_passwordLabel = new javax.swing.JLabel();
-        settings_nameTextField = new javax.swing.JTextField();
-        settings_emailTextField = new javax.swing.JTextField();
-        settings_passwordPasswordField = new javax.swing.JPasswordField();
+        nameLabel = new javax.swing.JLabel();
+        emailLabel = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
+        nameTextField = new javax.swing.JTextField();
+        emailTextField = new javax.swing.JTextField();
+        passwordPasswordField = new javax.swing.JPasswordField();
         pathPanel = new javax.swing.JPanel();
-        settings_mailsLocationLabel = new javax.swing.JLabel();
-        settings_contactsLocationLabel = new javax.swing.JLabel();
-        settings_settingsLocationLabel = new javax.swing.JLabel();
-        settings_mailsLocationTextField = new javax.swing.JTextField();
-        settings_contactsLocationTextField = new javax.swing.JTextField();
-        settings_settingsLocationTextField = new javax.swing.JTextField();
-        settings_mailsLocationButton = new javax.swing.JButton();
-        settings_contactsLocationButton = new javax.swing.JButton();
-        settings_settingsLocationButton = new javax.swing.JButton();
-        settings_saveSettingsButton = new javax.swing.JButton();
-        settings_cancelSettingsButton = new javax.swing.JButton();
-        settings_Configurepop3Button = new javax.swing.JButton();
-        settings_ConfigureSmtpButton = new javax.swing.JButton();
+        mailsLocationLabel = new javax.swing.JLabel();
+        contactsLocationLabel = new javax.swing.JLabel();
+        settingsLocationLabel = new javax.swing.JLabel();
+        mailsLocationTextField = new javax.swing.JTextField();
+        contactsLocationTextField = new javax.swing.JTextField();
+        settingsLocationTextField = new javax.swing.JTextField();
+        mailsLocationButton = new javax.swing.JButton();
+        contactsLocationButton = new javax.swing.JButton();
+        settingsLocationButton = new javax.swing.JButton();
+        saveSettingsButton = new javax.swing.JButton();
+        cancelSettingsButton = new javax.swing.JButton();
+        Configurepop3Button = new javax.swing.JButton();
+        ConfigureSmtpButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getResourceMap(SettingsDialog.class);
@@ -65,23 +69,23 @@ public class SettingsDialog extends javax.swing.JDialog {
         userInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("userInfoPanel.border.title"))); // NOI18N
         userInfoPanel.setName("userInfoPanel"); // NOI18N
 
-        settings_nameLabel.setText(resourceMap.getString("settings_nameLabel.text")); // NOI18N
-        settings_nameLabel.setName("settings_nameLabel"); // NOI18N
+        nameLabel.setText(resourceMap.getString("nameLabel.text")); // NOI18N
+        nameLabel.setName("nameLabel"); // NOI18N
 
-        settings_emailLabel.setText(resourceMap.getString("settings_emailLabel.text")); // NOI18N
-        settings_emailLabel.setName("settings_emailLabel"); // NOI18N
+        emailLabel.setText(resourceMap.getString("emailLabel.text")); // NOI18N
+        emailLabel.setName("emailLabel"); // NOI18N
 
-        settings_passwordLabel.setText(resourceMap.getString("settings_passwordLabel.text")); // NOI18N
-        settings_passwordLabel.setName("settings_passwordLabel"); // NOI18N
+        passwordLabel.setText(resourceMap.getString("passwordLabel.text")); // NOI18N
+        passwordLabel.setName("passwordLabel"); // NOI18N
 
-        settings_nameTextField.setText(resourceMap.getString("settings_nameTextField.text")); // NOI18N
-        settings_nameTextField.setName("settings_nameTextField"); // NOI18N
+        nameTextField.setText(resourceMap.getString("nameTextField.text")); // NOI18N
+        nameTextField.setName("nameTextField"); // NOI18N
 
-        settings_emailTextField.setText(resourceMap.getString("settings_emailTextField.text")); // NOI18N
-        settings_emailTextField.setName("settings_emailTextField"); // NOI18N
+        emailTextField.setText(resourceMap.getString("emailTextField.text")); // NOI18N
+        emailTextField.setName("emailTextField"); // NOI18N
 
-        settings_passwordPasswordField.setText(resourceMap.getString("settings_passwordPasswordField.text")); // NOI18N
-        settings_passwordPasswordField.setName("settings_passwordPasswordField"); // NOI18N
+        passwordPasswordField.setText(resourceMap.getString("passwordPasswordField.text")); // NOI18N
+        passwordPasswordField.setName("passwordPasswordField"); // NOI18N
 
         javax.swing.GroupLayout userInfoPanelLayout = new javax.swing.GroupLayout(userInfoPanel);
         userInfoPanel.setLayout(userInfoPanelLayout);
@@ -90,14 +94,14 @@ public class SettingsDialog extends javax.swing.JDialog {
             .addGroup(userInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(settings_passwordLabel)
-                    .addComponent(settings_emailLabel)
-                    .addComponent(settings_nameLabel))
+                    .addComponent(passwordLabel)
+                    .addComponent(emailLabel)
+                    .addComponent(nameLabel))
                 .addGap(18, 18, 18)
                 .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(settings_nameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
-                    .addComponent(settings_emailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
-                    .addComponent(settings_passwordPasswordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE))
+                    .addComponent(nameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+                    .addComponent(emailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+                    .addComponent(passwordPasswordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE))
                 .addContainerGap())
         );
         userInfoPanelLayout.setVerticalGroup(
@@ -105,48 +109,48 @@ public class SettingsDialog extends javax.swing.JDialog {
             .addGroup(userInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(settings_nameLabel)
-                    .addComponent(settings_nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameLabel)
+                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(settings_emailLabel)
-                    .addComponent(settings_emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(emailLabel)
+                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(settings_passwordLabel)
-                    .addComponent(settings_passwordPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordLabel)
+                    .addComponent(passwordPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pathPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("pathPanel.border.title"))); // NOI18N
         pathPanel.setName("pathPanel"); // NOI18N
 
-        settings_mailsLocationLabel.setText(resourceMap.getString("settings_mailsLocationLabel.text")); // NOI18N
-        settings_mailsLocationLabel.setName("settings_mailsLocationLabel"); // NOI18N
+        mailsLocationLabel.setText(resourceMap.getString("mailsLocationLabel.text")); // NOI18N
+        mailsLocationLabel.setName("mailsLocationLabel"); // NOI18N
 
-        settings_contactsLocationLabel.setText(resourceMap.getString("settings_contactsLocationLabel.text")); // NOI18N
-        settings_contactsLocationLabel.setName("settings_contactsLocationLabel"); // NOI18N
+        contactsLocationLabel.setText(resourceMap.getString("contactsLocationLabel.text")); // NOI18N
+        contactsLocationLabel.setName("contactsLocationLabel"); // NOI18N
 
-        settings_settingsLocationLabel.setText(resourceMap.getString("settings_settingsLocationLabel.text")); // NOI18N
-        settings_settingsLocationLabel.setName("settings_settingsLocationLabel"); // NOI18N
+        settingsLocationLabel.setText(resourceMap.getString("settingsLocationLabel.text")); // NOI18N
+        settingsLocationLabel.setName("settingsLocationLabel"); // NOI18N
 
-        settings_mailsLocationTextField.setText(resourceMap.getString("settings_mailsLocationTextField.text")); // NOI18N
-        settings_mailsLocationTextField.setName("settings_mailsLocationTextField"); // NOI18N
+        mailsLocationTextField.setText(resourceMap.getString("mailsLocationTextField.text")); // NOI18N
+        mailsLocationTextField.setName("mailsLocationTextField"); // NOI18N
 
-        settings_contactsLocationTextField.setText(resourceMap.getString("settings_contactsLocationTextField.text")); // NOI18N
-        settings_contactsLocationTextField.setName("settings_contactsLocationTextField"); // NOI18N
+        contactsLocationTextField.setText(resourceMap.getString("contactsLocationTextField.text")); // NOI18N
+        contactsLocationTextField.setName("contactsLocationTextField"); // NOI18N
 
-        settings_settingsLocationTextField.setText(resourceMap.getString("settings_settingsLocationTextField.text")); // NOI18N
-        settings_settingsLocationTextField.setName("settings_settingsLocationTextField"); // NOI18N
+        settingsLocationTextField.setText(resourceMap.getString("settingsLocationTextField.text")); // NOI18N
+        settingsLocationTextField.setName("settingsLocationTextField"); // NOI18N
 
-        settings_mailsLocationButton.setText(resourceMap.getString("settings_mailsLocationButton.text")); // NOI18N
-        settings_mailsLocationButton.setName("settings_mailsLocationButton"); // NOI18N
+        mailsLocationButton.setText(resourceMap.getString("mailsLocationButton.text")); // NOI18N
+        mailsLocationButton.setName("mailsLocationButton"); // NOI18N
 
-        settings_contactsLocationButton.setText(resourceMap.getString("settings_contactsLocationButton.text")); // NOI18N
-        settings_contactsLocationButton.setName("settings_contactsLocationButton"); // NOI18N
+        contactsLocationButton.setText(resourceMap.getString("contactsLocationButton.text")); // NOI18N
+        contactsLocationButton.setName("contactsLocationButton"); // NOI18N
 
-        settings_settingsLocationButton.setText(resourceMap.getString("settings_settingsLocationButton.text")); // NOI18N
-        settings_settingsLocationButton.setName("settings_settingsLocationButton"); // NOI18N
+        settingsLocationButton.setText(resourceMap.getString("settingsLocationButton.text")); // NOI18N
+        settingsLocationButton.setName("settingsLocationButton"); // NOI18N
 
         javax.swing.GroupLayout pathPanelLayout = new javax.swing.GroupLayout(pathPanel);
         pathPanel.setLayout(pathPanelLayout);
@@ -155,21 +159,21 @@ public class SettingsDialog extends javax.swing.JDialog {
             .addGroup(pathPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(settings_settingsLocationLabel)
+                    .addComponent(settingsLocationLabel)
                     .addGroup(pathPanelLayout.createSequentialGroup()
                         .addGroup(pathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(settings_contactsLocationLabel)
-                            .addComponent(settings_mailsLocationLabel))
+                            .addComponent(contactsLocationLabel)
+                            .addComponent(mailsLocationLabel))
                         .addGap(18, 18, 18)
                         .addGroup(pathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(settings_contactsLocationTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                            .addComponent(settings_settingsLocationTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                            .addComponent(settings_mailsLocationTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))))
+                            .addComponent(contactsLocationTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                            .addComponent(settingsLocationTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                            .addComponent(mailsLocationTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))))
                 .addGap(7, 7, 7)
                 .addGroup(pathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(settings_contactsLocationButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(settings_settingsLocationButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, Short.MAX_VALUE)
-                    .addComponent(settings_mailsLocationButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(contactsLocationButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(settingsLocationButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(mailsLocationButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         pathPanelLayout.setVerticalGroup(
@@ -177,35 +181,37 @@ public class SettingsDialog extends javax.swing.JDialog {
             .addGroup(pathPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(settings_mailsLocationLabel)
-                    .addComponent(settings_mailsLocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(settings_mailsLocationButton))
+                    .addComponent(mailsLocationLabel)
+                    .addComponent(mailsLocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mailsLocationButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(settings_contactsLocationLabel)
-                    .addComponent(settings_contactsLocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(settings_contactsLocationButton))
+                    .addComponent(contactsLocationLabel)
+                    .addComponent(contactsLocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactsLocationButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(settings_settingsLocationLabel)
-                    .addComponent(settings_settingsLocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(settings_settingsLocationButton))
+                    .addComponent(settingsLocationLabel)
+                    .addComponent(settingsLocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(settingsLocationButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        settings_saveSettingsButton.setLabel(resourceMap.getString("settings_saveSettingsButton.label")); // NOI18N
-        settings_saveSettingsButton.setName("settings_saveSettingsButton"); // NOI18N
+        saveSettingsButton.setLabel(resourceMap.getString("saveSettingsButton.label")); // NOI18N
+        saveSettingsButton.setName("saveSettingsButton"); // NOI18N
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getActionMap(SettingsDialog.class, this);
-        settings_cancelSettingsButton.setAction(actionMap.get("cancelSettings")); // NOI18N
-        settings_cancelSettingsButton.setText(resourceMap.getString("settings_cancelSettingsButton.text")); // NOI18N
-        settings_cancelSettingsButton.setName("settings_cancelSettingsButton"); // NOI18N
+        cancelSettingsButton.setAction(actionMap.get("cancelSettings")); // NOI18N
+        cancelSettingsButton.setText(resourceMap.getString("cancelSettingsButton.text")); // NOI18N
+        cancelSettingsButton.setName("cancelSettingsButton"); // NOI18N
 
-        settings_Configurepop3Button.setText(resourceMap.getString("settings_Configurepop3Button.text")); // NOI18N
-        settings_Configurepop3Button.setName("settings_Configurepop3Button"); // NOI18N
+        Configurepop3Button.setAction(actionMap.get("showPOP3ConfigDialog")); // NOI18N
+        Configurepop3Button.setText(resourceMap.getString("Configurepop3Button.text")); // NOI18N
+        Configurepop3Button.setName("Configurepop3Button"); // NOI18N
 
-        settings_ConfigureSmtpButton.setText(resourceMap.getString("settings_ConfigureSmtpButton.text")); // NOI18N
-        settings_ConfigureSmtpButton.setName("settings_ConfigureSmtpButton"); // NOI18N
+        ConfigureSmtpButton.setAction(actionMap.get("showSMTPConfigDialog")); // NOI18N
+        ConfigureSmtpButton.setText(resourceMap.getString("ConfigureSmtpButton.text")); // NOI18N
+        ConfigureSmtpButton.setName("ConfigureSmtpButton"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -217,13 +223,13 @@ public class SettingsDialog extends javax.swing.JDialog {
                     .addComponent(pathPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(userInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(settings_Configurepop3Button, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Configurepop3Button, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(settings_ConfigureSmtpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ConfigureSmtpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                        .addComponent(settings_cancelSettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancelSettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(settings_saveSettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(saveSettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -235,14 +241,14 @@ public class SettingsDialog extends javax.swing.JDialog {
                 .addComponent(pathPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(settings_saveSettingsButton)
-                    .addComponent(settings_cancelSettingsButton)
-                    .addComponent(settings_Configurepop3Button)
-                    .addComponent(settings_ConfigureSmtpButton))
+                    .addComponent(saveSettingsButton)
+                    .addComponent(cancelSettingsButton)
+                    .addComponent(Configurepop3Button)
+                    .addComponent(ConfigureSmtpButton))
                 .addContainerGap())
         );
 
-        settings_cancelSettingsButton.getAccessibleContext().setAccessibleName(resourceMap.getString("cancelSettingsButton.AccessibleContext.accessibleName")); // NOI18N
+        cancelSettingsButton.getAccessibleContext().setAccessibleName(resourceMap.getString("cancelSettingsButton.AccessibleContext.accessibleName")); // NOI18N
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -270,28 +276,30 @@ public class SettingsDialog extends javax.swing.JDialog {
     public void cancelSettings() {
         dispose();
     }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton ConfigureSmtpButton;
+    private javax.swing.JButton Configurepop3Button;
+    private javax.swing.JButton cancelSettingsButton;
+    private javax.swing.JButton contactsLocationButton;
+    private javax.swing.JLabel contactsLocationLabel;
+    private javax.swing.JTextField contactsLocationTextField;
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JTextField emailTextField;
+    private javax.swing.JButton mailsLocationButton;
+    private javax.swing.JLabel mailsLocationLabel;
+    private javax.swing.JTextField mailsLocationTextField;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JLabel passwordLabel;
+    private javax.swing.JPasswordField passwordPasswordField;
     private javax.swing.JPanel pathPanel;
-    private javax.swing.JButton settings_ConfigureSmtpButton;
-    private javax.swing.JButton settings_Configurepop3Button;
-    private javax.swing.JButton settings_cancelSettingsButton;
-    private javax.swing.JButton settings_contactsLocationButton;
-    private javax.swing.JLabel settings_contactsLocationLabel;
-    private javax.swing.JTextField settings_contactsLocationTextField;
-    private javax.swing.JLabel settings_emailLabel;
-    private javax.swing.JTextField settings_emailTextField;
-    private javax.swing.JButton settings_mailsLocationButton;
-    private javax.swing.JLabel settings_mailsLocationLabel;
-    private javax.swing.JTextField settings_mailsLocationTextField;
-    private javax.swing.JLabel settings_nameLabel;
-    private javax.swing.JTextField settings_nameTextField;
-    private javax.swing.JLabel settings_passwordLabel;
-    private javax.swing.JPasswordField settings_passwordPasswordField;
-    private javax.swing.JButton settings_saveSettingsButton;
-    private javax.swing.JButton settings_settingsLocationButton;
-    private javax.swing.JLabel settings_settingsLocationLabel;
-    private javax.swing.JTextField settings_settingsLocationTextField;
+    private javax.swing.JButton saveSettingsButton;
+    private javax.swing.JButton settingsLocationButton;
+    private javax.swing.JLabel settingsLocationLabel;
+    private javax.swing.JTextField settingsLocationTextField;
     private javax.swing.JPanel userInfoPanel;
     // End of variables declaration//GEN-END:variables
+
 }
