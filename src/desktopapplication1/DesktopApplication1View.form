@@ -23,7 +23,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="main_topPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="main_TabbedPane" pref="508" max="32767" attributes="0"/>
+                  <Component id="main_TabbedPane" pref="510" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -63,7 +63,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="458" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="460" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -118,7 +118,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="458" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="460" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -179,7 +179,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane3" pref="458" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" pref="460" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -222,7 +222,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="main_mailLabel" min="-2" pref="186" max="-2" attributes="0"/>
-                      <EmptySpace pref="543" max="32767" attributes="0"/>
+                      <EmptySpace pref="545" max="32767" attributes="0"/>
                       <Component id="main_newMailButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -250,6 +250,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="main_newMailButton">
               <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="desktopapplication1.DesktopApplication1View" id="showNewMailDialog" methodName="showNewMailDialog"/>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="main_newMailButton.text"/>
                 <Property name="name" type="java.lang.String" value="main_newMailButton" noResource="true"/>
               </Properties>

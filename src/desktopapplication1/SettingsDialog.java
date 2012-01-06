@@ -20,8 +20,6 @@ public class SettingsDialog extends javax.swing.JDialog {
 
     /** Creates new form SettingsDialog */
     public SettingsDialog(java.awt.Frame parent) {
-//        super(parent, modal);
-//        initComponents();
         super(parent);
         initComponents();
     }

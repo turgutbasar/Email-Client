@@ -13,21 +13,17 @@ abstract public class Server {
     /*We have to add and implement more attributes but for now we do not know
      * any more attributes.
      */
-    public Server(String hostname, String port) {
-        this.hostname = hostname;
-        this.port = Integer.parseInt(port);
-    }
-    
-    abstract public void connect();
-    
-    abstract public void disconnect();
-
-    public String getHostname() {
-        return hostname;
+    public Server(String hostname, int port) {
+        this.host = hostname;
+        this.port = port;
     }
 
-    public void setHostname(String hostname) {
-        this.hostname = hostname;
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String hostname) {
+        this.host = hostname;
     }
 
     public int getPort() {
@@ -37,6 +33,7 @@ abstract public class Server {
     public void setPort(int port) {
         this.port = port;
     }
-    private String hostname;
+    
+    private String host;
     private int port;
 }

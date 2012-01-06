@@ -151,7 +151,7 @@ public class DesktopApplication1View extends FrameView {
             main_receivedBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(main_receivedBoxPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -178,7 +178,7 @@ public class DesktopApplication1View extends FrameView {
             main_sentBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(main_sentBoxPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -206,7 +206,7 @@ public class DesktopApplication1View extends FrameView {
             main_contactsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(main_contactsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -218,6 +218,8 @@ public class DesktopApplication1View extends FrameView {
         main_mailLabel.setText(resourceMap.getString("main_mailLabel.text")); // NOI18N
         main_mailLabel.setName("main_mailLabel"); // NOI18N
 
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getActionMap(DesktopApplication1View.class, this);
+        main_newMailButton.setAction(actionMap.get("showNewMailDialog")); // NOI18N
         main_newMailButton.setText(resourceMap.getString("main_newMailButton.text")); // NOI18N
         main_newMailButton.setName("main_newMailButton"); // NOI18N
 
@@ -228,7 +230,7 @@ public class DesktopApplication1View extends FrameView {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, main_topPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(main_mailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 543, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 545, Short.MAX_VALUE)
                 .addComponent(main_newMailButton)
                 .addContainerGap())
         );
@@ -257,7 +259,7 @@ public class DesktopApplication1View extends FrameView {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(main_topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(main_TabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+                .addComponent(main_TabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -266,7 +268,6 @@ public class DesktopApplication1View extends FrameView {
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getActionMap(DesktopApplication1View.class, this);
         settingsMenuItem.setAction(actionMap.get("showSettings")); // NOI18N
         settingsMenuItem.setText(resourceMap.getString("settingsMenuItem.text")); // NOI18N
         settingsMenuItem.setName("settingsMenuItem"); // NOI18N
@@ -343,6 +344,16 @@ public class DesktopApplication1View extends FrameView {
         DesktopApplication1.getApplication().show(settingsPanel);
     }
 
+    @Action
+    public void showNewMailDialog() {
+        if (newMailPanel == null) {
+            JFrame mainFrame = DesktopApplication1.getApplication().getMainFrame();
+            newMailPanel = new NewMailDialog(mainFrame);
+            newMailPanel.setLocationRelativeTo(mainFrame);
+        }
+        DesktopApplication1.getApplication().show(newMailPanel);        
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu editMenu;
     private javax.swing.JScrollPane jScrollPane1;
@@ -375,4 +386,5 @@ public class DesktopApplication1View extends FrameView {
 
     private JDialog aboutBox;
     private JDialog settingsPanel;
+    private JDialog newMailPanel;
 }
