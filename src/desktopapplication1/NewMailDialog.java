@@ -230,8 +230,8 @@ public class NewMailDialog extends javax.swing.JDialog {
             }
             
             //TODO: Get Configuration
-            String host = DesktopApplication1.config.getHost();
-            String port = DesktopApplication1.config.getPort();
+            String host = DesktopApplication1.config.getSMTPHost();
+            String port = DesktopApplication1.config.getSMTPPort();
             String from = DesktopApplication1.config.getFrom();
             String pass = DesktopApplication1.config.getPass();
             

@@ -12,7 +12,7 @@ import org.jdesktop.application.SingleFrameApplication;
  */
 public class DesktopApplication1 extends SingleFrameApplication {
     
-    public static Configuration config;
+    public static Configuration config = new Configuration();
     
     /**
      * At startup create and show the main frame of the application.
