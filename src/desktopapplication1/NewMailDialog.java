@@ -230,9 +230,16 @@ public class NewMailDialog extends javax.swing.JDialog {
             }
             
             //TODO: Get Configuration
+            String host = DesktopApplication1.config.getHost();
+            String port = DesktopApplication1.config.getPort();
+            String from = DesktopApplication1.config.getFrom();
+            String pass = DesktopApplication1.config.getPass();
             
-            //SMTPConnection connection = new SMTPConnection(host, port, from, pass, to[]);
-            //connection.sendMail(subjectTextField.getText(), messageTextArea.getText());
+            String [] to = toTextField.getText().split("; ");
+            String [] cc = ccTextField.getText().split("; ");
+            
+            SMTPConnection connection = new SMTPConnection(host, Integer.parseInt(port), from, pass);
+            connection.sendMail(subjectTextField.getText(), messageTextArea.getText(), to, cc);
             
         } else {
             //TODO: Error: No To List!

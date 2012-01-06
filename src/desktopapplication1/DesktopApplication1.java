@@ -6,14 +6,14 @@ package desktopapplication1;
 
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
-import javax.mail.*;
-import javax.activation.*;
 
 /**
  * The main class of the application.
  */
 public class DesktopApplication1 extends SingleFrameApplication {
-
+    
+    public static Configuration config;
+    
     /**
      * At startup create and show the main frame of the application.
      */
@@ -41,7 +41,11 @@ public class DesktopApplication1 extends SingleFrameApplication {
      * Main method launching the application.
      */
     public static void main(String[] args) {
-        launch(DesktopApplication1.class, args);
         
+        //Get Config
+        config = new Configuration();
+        
+        launch(DesktopApplication1.class, args); 
     }
+
 }

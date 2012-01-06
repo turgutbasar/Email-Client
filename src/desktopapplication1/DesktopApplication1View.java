@@ -387,4 +387,5 @@ public class DesktopApplication1View extends FrameView {
     private JDialog aboutBox;
     private JDialog settingsPanel;
     private JDialog newMailPanel;
+
 }
