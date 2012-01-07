@@ -1,18 +1,14 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * This class is an abstract class for POP3 and SMTP protocols.
  */
 package desktopapplication1;
 
 /**
  *
- * @author kursat
+ * @author kursat and TheCodeGuru
  */
 abstract public class Server {
     
-    /*We have to add and implement more attributes but for now we do not know
-     * any more attributes.
-     */
     public Server(String hostname, int port) {
         this.host = hostname;
         this.port = port;
