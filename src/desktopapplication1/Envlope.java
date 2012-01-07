@@ -1,15 +1,24 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * This class used as mail object.
  */
 package desktopapplication1;
 
 /**
  *
- * @author CodeGuru
+ * @author kursat and TheCodeGuru
  */
 public class Envlope {
 
+    public Envlope(String subject, String body, Boolean isHtml, String folder, String[] from, String[] cc, String[] to) {
+        this.subject = subject;
+        this.body = body;
+        this.isHtml = isHtml;
+        this.folder = folder;
+        this.from = from;
+        this.cc = cc;
+        this.to = to;
+    }
+        
     public String getBody() {
         return body;
     }
@@ -38,15 +47,6 @@ public class Envlope {
         return to;
     }
 
-    public Envlope(String subject, String body, Boolean isHtml, String folder, String[] from, String[] cc, String[] to) {
-        this.subject = subject;
-        this.body = body;
-        this.isHtml = isHtml;
-        this.folder = folder;
-        this.from = from;
-        this.cc = cc;
-        this.to = to;
-    }
     private String subject;
     private String body;
     private Boolean isHtml;
