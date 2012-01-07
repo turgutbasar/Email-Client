@@ -105,7 +105,7 @@ public class DesktopApplication1View extends FrameView {
 
         //////////////////////////
         POP3Connection p = new POP3Connection(DesktopApplication1.config.getPOP3Host(),Integer.parseInt(DesktopApplication1.config.getPOP3Port()),DesktopApplication1.config.getFrom(),DesktopApplication1.config.getPass());
-        Envlope[] envlopes = null;
+        Envelope[] envlopes = null;
         try {
             p.connect();
             p.openFolder("INBOX");
