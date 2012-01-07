@@ -16,6 +16,7 @@ public class Configuration {
     public Configuration() {
         getFileLocationFromFile();
         readConfiguration();
+        
     }
 
     public String getPOP3Host() {
@@ -87,10 +88,14 @@ public class Configuration {
             setPOP3Port(configFile.getProperty("POP3_Port"));
             setFrom(configFile.getProperty("From"));
             setPass(configFile.getProperty("Password"));
+            setName(configFile.getProperty("Name"));
+            setMailsLocation(configFile.getProperty("Mails_Location"));
+            setContactsLocation(configFile.getProperty("Contacts_Location"));
+            
             //configFile.list(System.out);
         } catch (Exception e) {
             //TODO: Handle Exception.
-            System.out.println(e.getMessage());
+            System.out.println("Read Exception:" + e.getMessage());
         }
     }
 
@@ -106,11 +111,15 @@ public class Configuration {
             configFile.put("POP3_Port", getPOP3Port());
             configFile.put("From", getFrom());
             configFile.put("Password", getPass());
+            configFile.put("Name", getName());
+            configFile.put("Mails_Location", getMailsLocation());
+            configFile.put("Contacts_Location", getContactsLocation());
+            
             FileOutputStream out = new FileOutputStream(getFileLocation());
             configFile.save(out, " properties updated ");
         }
         catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Write Exception:" + e.getMessage());
         }
     }
     
@@ -153,5 +162,34 @@ public class Configuration {
     //It will hold the variable location of settings file
     private String fileLocation;
     final private String permanentFL = "File_MailClient.dat";
+
+    
+    public String getContactsLocation() {
+        return contactsLocation;
+    }
+
+    public void setContactsLocation(String contactsLocation) {
+        this.contactsLocation = contactsLocation;
+    }
+
+    public String getMailsLocation() {
+        return mailsLocation;
+    }
+
+    public void setMailsLocation(String mailsLocation) {
+        this.mailsLocation = mailsLocation;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    private String name;
+    private  String mailsLocation;
+    private  String contactsLocation;
     
 }

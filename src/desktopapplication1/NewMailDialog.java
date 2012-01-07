@@ -22,6 +22,8 @@ public class NewMailDialog extends javax.swing.JDialog {
     public NewMailDialog(java.awt.Frame parent) {
         super(parent);
         initComponents();
+        
+        messageTextArea.setText("Hello,\n\nRegards, " + DesktopApplication1.config.getName() );
     }
 
     /** This method is called from within the constructor to
@@ -117,6 +119,7 @@ public class NewMailDialog extends javax.swing.JDialog {
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
         messageTextArea.setColumns(20);
+        messageTextArea.setFont(resourceMap.getFont("messageTextArea.font")); // NOI18N
         messageTextArea.setRows(5);
         messageTextArea.setName("messageTextArea"); // NOI18N
         jScrollPane2.setViewportView(messageTextArea);

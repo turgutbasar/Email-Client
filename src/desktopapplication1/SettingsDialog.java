@@ -26,6 +26,20 @@ public class SettingsDialog extends javax.swing.JDialog {
     public SettingsDialog(java.awt.Frame parent) {
         super(parent);
         initComponents();
+        
+        nameTextField.setText(DesktopApplication1.config.getName());
+        emailTextField.setText(DesktopApplication1.config.getFrom());
+        passwordPasswordField.setText(DesktopApplication1.config.getPass());
+        
+        SMTPHostTextField.setText(DesktopApplication1.config.getSMTPHost());
+        SMTPPortTextField.setText(DesktopApplication1.config.getSMTPPort());
+        POP3HostTextField.setText(DesktopApplication1.config.getPOP3Host());
+        POP3PortTextField.setText(DesktopApplication1.config.getPOP3Port());
+        
+        mailsLocationTextField.setText(DesktopApplication1.config.getMailsLocation());
+        contactsLocationTextField.setText(DesktopApplication1.config.getContactsLocation());
+        settingsLocationTextField.setText(DesktopApplication1.config.getFileLocation());
+        
     }
 
     /** This method is called from within the constructor to
@@ -54,15 +68,22 @@ public class SettingsDialog extends javax.swing.JDialog {
         mailsLocationButton = new javax.swing.JButton();
         contactsLocationButton = new javax.swing.JButton();
         settingsLocationButton = new javax.swing.JButton();
-        saveSettingsButton = new javax.swing.JButton();
+        applySettingsButton = new javax.swing.JButton();
         cancelSettingsButton = new javax.swing.JButton();
-        Configurepop3Button = new javax.swing.JButton();
-        ConfigureSmtpButton = new javax.swing.JButton();
+        SMTPAndPOP3SettingsPanel = new javax.swing.JPanel();
+        SMTPHostLabel = new javax.swing.JLabel();
+        SMTPPortLabel = new javax.swing.JLabel();
+        POP3HostLabel = new javax.swing.JLabel();
+        POP3PortLabel = new javax.swing.JLabel();
+        SMTPHostTextField = new javax.swing.JTextField();
+        SMTPPortTextField = new javax.swing.JTextField();
+        POP3HostTextField = new javax.swing.JTextField();
+        POP3PortTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getResourceMap(SettingsDialog.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
-        setMinimumSize(new java.awt.Dimension(453, 300));
+        setMinimumSize(new java.awt.Dimension(453, 438));
         setName("Form"); // NOI18N
         setResizable(false);
 
@@ -97,11 +118,11 @@ public class SettingsDialog extends javax.swing.JDialog {
                     .addComponent(passwordLabel)
                     .addComponent(emailLabel)
                     .addComponent(nameLabel))
-                .addGap(18, 18, 18)
-                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
-                    .addComponent(emailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
-                    .addComponent(passwordPasswordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE))
+                .addGap(18, 62, Short.MAX_VALUE)
+                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(nameTextField)
+                    .addComponent(emailTextField)
+                    .addComponent(passwordPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))
                 .addContainerGap())
         );
         userInfoPanelLayout.setVerticalGroup(
@@ -197,39 +218,96 @@ public class SettingsDialog extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        saveSettingsButton.setLabel(resourceMap.getString("saveSettingsButton.label")); // NOI18N
-        saveSettingsButton.setName("saveSettingsButton"); // NOI18N
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getActionMap(SettingsDialog.class, this);
+        applySettingsButton.setAction(actionMap.get("onClickApplyButton")); // NOI18N
+        applySettingsButton.setText(resourceMap.getString("applySettingsButton.text")); // NOI18N
+        applySettingsButton.setName("applySettingsButton"); // NOI18N
+
         cancelSettingsButton.setAction(actionMap.get("cancelSettings")); // NOI18N
         cancelSettingsButton.setText(resourceMap.getString("cancelSettingsButton.text")); // NOI18N
         cancelSettingsButton.setName("cancelSettingsButton"); // NOI18N
 
-        Configurepop3Button.setAction(actionMap.get("showPOP3ConfigDialog")); // NOI18N
-        Configurepop3Button.setText(resourceMap.getString("Configurepop3Button.text")); // NOI18N
-        Configurepop3Button.setName("Configurepop3Button"); // NOI18N
+        SMTPAndPOP3SettingsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("SMTPAndPOP3SettingsPanel.border.title"))); // NOI18N
+        SMTPAndPOP3SettingsPanel.setName("SMTPAndPOP3SettingsPanel"); // NOI18N
 
-        ConfigureSmtpButton.setAction(actionMap.get("showSMTPConfigDialog")); // NOI18N
-        ConfigureSmtpButton.setText(resourceMap.getString("ConfigureSmtpButton.text")); // NOI18N
-        ConfigureSmtpButton.setName("ConfigureSmtpButton"); // NOI18N
+        SMTPHostLabel.setText(resourceMap.getString("SMTPHostLabel.text")); // NOI18N
+        SMTPHostLabel.setName("SMTPHostLabel"); // NOI18N
+
+        SMTPPortLabel.setText(resourceMap.getString("SMTPPortLabel.text")); // NOI18N
+        SMTPPortLabel.setName("SMTPPortLabel"); // NOI18N
+
+        POP3HostLabel.setText(resourceMap.getString("POP3HostLabel.text")); // NOI18N
+        POP3HostLabel.setName("POP3HostLabel"); // NOI18N
+
+        POP3PortLabel.setText(resourceMap.getString("POP3PortLabel.text")); // NOI18N
+        POP3PortLabel.setName("POP3PortLabel"); // NOI18N
+
+        SMTPHostTextField.setText(resourceMap.getString("SMTPHostTextField.text")); // NOI18N
+        SMTPHostTextField.setName("SMTPHostTextField"); // NOI18N
+
+        SMTPPortTextField.setText(resourceMap.getString("SMTPPortTextField.text")); // NOI18N
+        SMTPPortTextField.setName("SMTPPortTextField"); // NOI18N
+
+        POP3HostTextField.setText(resourceMap.getString("POP3HostTextField.text")); // NOI18N
+        POP3HostTextField.setName("POP3HostTextField"); // NOI18N
+
+        POP3PortTextField.setText(resourceMap.getString("POP3PortTextField.text")); // NOI18N
+        POP3PortTextField.setName("POP3PortTextField"); // NOI18N
+
+        javax.swing.GroupLayout SMTPAndPOP3SettingsPanelLayout = new javax.swing.GroupLayout(SMTPAndPOP3SettingsPanel);
+        SMTPAndPOP3SettingsPanel.setLayout(SMTPAndPOP3SettingsPanelLayout);
+        SMTPAndPOP3SettingsPanelLayout.setHorizontalGroup(
+            SMTPAndPOP3SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SMTPAndPOP3SettingsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(SMTPAndPOP3SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SMTPHostLabel)
+                    .addComponent(SMTPPortLabel)
+                    .addComponent(POP3HostLabel)
+                    .addComponent(POP3PortLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(SMTPAndPOP3SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(POP3PortTextField)
+                    .addComponent(POP3HostTextField)
+                    .addComponent(SMTPPortTextField)
+                    .addComponent(SMTPHostTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        SMTPAndPOP3SettingsPanelLayout.setVerticalGroup(
+            SMTPAndPOP3SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SMTPAndPOP3SettingsPanelLayout.createSequentialGroup()
+                .addGroup(SMTPAndPOP3SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SMTPHostLabel)
+                    .addComponent(SMTPHostTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(SMTPAndPOP3SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SMTPPortLabel)
+                    .addComponent(SMTPPortTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(SMTPAndPOP3SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(POP3HostLabel)
+                    .addComponent(POP3HostTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(SMTPAndPOP3SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(POP3PortLabel)
+                    .addComponent(POP3PortTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pathPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(userInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Configurepop3Button, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ConfigureSmtpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SMTPAndPOP3SettingsPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(userInfoPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pathPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(cancelSettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(saveSettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(applySettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -238,13 +316,13 @@ public class SettingsDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(userInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SMTPAndPOP3SettingsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pathPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(saveSettingsButton)
-                    .addComponent(cancelSettingsButton)
-                    .addComponent(Configurepop3Button)
-                    .addComponent(ConfigureSmtpButton))
+                    .addComponent(applySettingsButton)
+                    .addComponent(cancelSettingsButton))
                 .addContainerGap())
         );
 
@@ -277,10 +355,38 @@ public class SettingsDialog extends javax.swing.JDialog {
         dispose();
     }
 
+    @Action
+    public void onClickApplyButton() {
+        DesktopApplication1.config.setFrom(emailTextField.getText());
+        DesktopApplication1.config.setPass(passwordPasswordField.getText());
+        
+        DesktopApplication1.config.setName(nameTextField.getText());
+        DesktopApplication1.config.setSMTPHost(SMTPHostTextField.getText());
+        DesktopApplication1.config.setSMTPPort(SMTPPortTextField.getText());
+        DesktopApplication1.config.setPOP3Host(POP3HostTextField.getText());
+        DesktopApplication1.config.setPOP3Port(POP3PortTextField.getText());
+        DesktopApplication1.config.setFileLocation(settingsLocationTextField.getText());
+        
+        DesktopApplication1.config.setMailsLocation(mailsLocationTextField.getText());
+        DesktopApplication1.config.setContactsLocation(contactsLocationTextField.getText());
+        
+        DesktopApplication1.config.writeConfiguration();
+        
+        dispose();
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ConfigureSmtpButton;
-    private javax.swing.JButton Configurepop3Button;
+    private javax.swing.JLabel POP3HostLabel;
+    private javax.swing.JTextField POP3HostTextField;
+    private javax.swing.JLabel POP3PortLabel;
+    private javax.swing.JTextField POP3PortTextField;
+    private javax.swing.JPanel SMTPAndPOP3SettingsPanel;
+    private javax.swing.JLabel SMTPHostLabel;
+    private javax.swing.JTextField SMTPHostTextField;
+    private javax.swing.JLabel SMTPPortLabel;
+    private javax.swing.JTextField SMTPPortTextField;
+    private javax.swing.JButton applySettingsButton;
     private javax.swing.JButton cancelSettingsButton;
     private javax.swing.JButton contactsLocationButton;
     private javax.swing.JLabel contactsLocationLabel;
@@ -295,7 +401,6 @@ public class SettingsDialog extends javax.swing.JDialog {
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField passwordPasswordField;
     private javax.swing.JPanel pathPanel;
-    private javax.swing.JButton saveSettingsButton;
     private javax.swing.JButton settingsLocationButton;
     private javax.swing.JLabel settingsLocationLabel;
     private javax.swing.JTextField settingsLocationTextField;
