@@ -101,15 +101,20 @@ public class DesktopApplication1View extends FrameView {
                 }
             }
         });
-        POP3Connection p = new POP3Connection("pop.gmail.com",995,"turgutbasar@gmail.com","123asd123");
+        //////////////////////////
+        POP3Connection p = new POP3Connection(DesktopApplication1.config.getPOP3Host(),Integer.parseInt(DesktopApplication1.config.getPOP3Port()),DesktopApplication1.config.getFrom(),DesktopApplication1.config.getPass());
+        Envlope[] envlopes = null;
         try {
             p.connect();
             p.openFolder("INBOX");
-            p.printAllMessages();
+            p.takeAllMessages();
+            envlopes = p.getEnvlopes();
+            p.closeFolder();
+            p.disconnect();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-
+        //////////////////////////
     }
 
     @Action

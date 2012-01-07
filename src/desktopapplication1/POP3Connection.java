@@ -1,28 +1,20 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * This Class is used to create an POP3Connection
+ * and implement some utility for POP3(take messages, delete message, get mails 
+ * count, get new mails count)
  */
 package desktopapplication1;
 
 import com.sun.mail.pop3.POP3SSLStore;
-import com.sun.mail.pop3.POP3Folder;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.mail.*;
-import java.util.*;
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Store;
-import org.jdesktop.application.Application;
-import java.io.*;
-import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.MimeBodyPart;
 
 /**
  *
- * @author kursat
+ * @author TheCodeGuru
  */
 public class POP3Connection extends Server{
 
@@ -33,6 +25,7 @@ public class POP3Connection extends Server{
         this.password = password;
         session = null;
         store = null;
+        msgs = null;
     }
     
     public void connect()
@@ -51,20 +44,21 @@ public class POP3Connection extends Server{
         //Connects to POP3 Server
         store.connect();
     }
+    
     public void openFolder(String folderName)
     throws Exception
     {
         //Creates POP3Folder object and ties it to folder
-        folder = (POP3Folder)store.getFolder(folderName);
+        folder = store.getFolder(folderName);
         if(folder == null)
             throw new Exception("Invalid folder Exception");
-        folder.open(2);
+        folder.open(Folder.READ_WRITE);
     }
 
     public void closeFolder()
     throws Exception
     {
-        folder.close(false);
+        folder.close(true);
     }
 
     public int getMessageCount()
@@ -85,17 +79,19 @@ public class POP3Connection extends Server{
         store.close();
     }
 
-    public void printAllMessages()
+    public void takeAllMessages()
     throws Exception
     {
-        Message msgs[] = folder.getMessages();
+        msgs = folder.getMessages();
         folder.fetch(msgs, new FetchProfile());
+        envelopes = new Envlope[msgs.length];
         for(int i = 0; i < msgs.length; i++)
-            dumpEnvelope(msgs[i]);
-
+            envelopes[i] = dumpEnvelope(msgs[i]);
     }
-
-
+    
+    public Envlope[] getEnvlopes() {
+        return envelopes;
+    }
 
     /*public static int saveFile(File saveFile, Part part) throws Exception {
 
@@ -112,12 +108,57 @@ public class POP3Connection extends Server{
         is.close();
         return count;
     }*/
-
-    private static void dumpEnvelope(Message m) throws Exception
+    public void markAsRead(int ID){
+        try {
+            msgs[ID].setFlag(Flags.Flag.DELETED, true);
+        } catch (MessagingException ex) {
+            Logger.getLogger(POP3Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void deleteMessages(int[] mailIDs){
+        //deletion of chosen ids
+        for(int i = 0; i < mailIDs.length; i++)
+            deleteEnvelope(mailIDs[i]);
+    }
+    public void deleteMessage(int mailID){
+        //deletion of chosen id
+        deleteEnvelope(mailID);
+    }
+    private void deleteEnvelope(int ID){
+        try {
+            msgs[ID].setFlag(Flags.Flag.DELETED, true);
+        } catch (MessagingException ex) {
+            Logger.getLogger(POP3Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    private static Envlope dumpEnvelope(Message m) throws Exception
     {
         String body="";
-        int size=0;
-        
+        Boolean html = false;
+        String folder = "RECIEVED";
+        String[] from = new String[m.getFrom().length];
+        for ( int i = 0 ; i  < from.length; ++i ){
+            from[i] = m.getFrom()[i].toString();
+            if ( from[i].contains(DesktopApplication1.config.getFrom())){
+                folder = "SENT";
+            }
+        }
+        String[] to = new String[m.getRecipients(Message.RecipientType.TO).length];
+        for ( int i = 0 ; i  < to.length; ++i ){
+            to[i] = m.getRecipients(Message.RecipientType.TO)[i].toString();
+            if ( to[i].contains(DesktopApplication1.config.getFrom()) && folder.compareTo("SENT") == 0){
+                folder = "BOTH";
+            }
+        }
+        String[] cc = null;
+        if ( m.getRecipients(Message.RecipientType.CC) != null){
+            cc = new String[m.getRecipients(Message.RecipientType.CC).length];
+            for ( int i = 0 ; i  < cc.length; ++i ){
+                cc[i] = m.getRecipients(Message.RecipientType.CC)[i].toString();
+            }
+        }
+        String subject= m.getSubject();
+        Date dateofMail= m.getSentDate();
         Object content = m.getContent();
         //If instance of mail content is Just String
         if(content instanceof String){
@@ -142,7 +183,7 @@ public class POP3Connection extends Server{
                     else if (mbp.isMimeType("TEXT/HTML")) {
                         body += mbp.getContent().toString();
                     }
-                } else if ((disposition != null) && (disposition.equals(Part.ATTACHMENT) || disposition.equals(Part.INLINE) || disposition.equals("ATTACHMENT") || disposition.equals("INLINE")) )
+                }/* else if ((disposition != null) && (disposition.equals(Part.ATTACHMENT) || disposition.equals(Part.INLINE) || disposition.equals("ATTACHMENT") || disposition.equals("INLINE")) )
                 {
                     // Check if plain
                     MimeBodyPart mbp = (MimeBodyPart)part;
@@ -152,20 +193,22 @@ public class POP3Connection extends Server{
                     else if (mbp.isMimeType("TEXT/HTML")) {
                         body += mbp.getContent().toString();
                     }
-                }
+                }*/
             }
         }
-
+        return new Envlope(subject, body, html, folder, from, cc, to);
     }
     private Session session;
     private POP3SSLStore store;
     private String password;
-    private POP3Folder folder;
+    private Folder folder;
     /*public static String numberOfFiles = null;
     public static int toCheck = 0;
     public static Writer output = null;*/
     URLName url;
     /*public static String receiving_attachments="D:\\download";*/
     private String from;
+    private Envlope[] envelopes;
+    private Message[] msgs;
     
 }
