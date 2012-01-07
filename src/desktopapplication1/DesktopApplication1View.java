@@ -20,6 +20,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import org.jdesktop.application.Action;
@@ -139,19 +140,25 @@ public class DesktopApplication1View extends FrameView {
     private void initComponents() {
 
         mainPanel = new JPanel();
-        main_TabbedPane = new JTabbedPane();
-        main_receivedBoxPanel = new JPanel();
+        topPanel = new JPanel();
+        mailLabel = new JLabel();
+        newMailButton = new JButton();
+        TabbedPane = new JTabbedPane();
+        receivedBoxPanel = new JPanel();
         jScrollPane1 = new JScrollPane();
-        main_receivedList = new JList();
-        main_sentBoxPanel = new JPanel();
+        receivedList = new JList();
+        sentBoxPanel = new JPanel();
         jScrollPane2 = new JScrollPane();
-        main_sentList = new JList();
-        main_contactsPanel = new JPanel();
+        sentList = new JList();
+        contactsPanel = new JPanel();
         jScrollPane3 = new JScrollPane();
-        main_contactsList = new JList();
-        main_topPanel = new JPanel();
-        main_mailLabel = new JLabel();
-        main_newMailButton = new JButton();
+        contactsList = new JList();
+        deleteContactsButton = new JButton();
+        contactsFileTextField = new JTextField();
+        contactsFileLocationButton = new JButton();
+        contactsFileLoadButton = new JButton();
+        addContactButton = new JButton();
+        addContactTextField = new JTextField();
         menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu();
         settingsMenuItem = new JMenuItem();
@@ -167,139 +174,183 @@ public class DesktopApplication1View extends FrameView {
 
         mainPanel.setName("mainPanel"); // NOI18N
 
-        main_TabbedPane.setName("main_TabbedPane"); // NOI18N
+        ResourceMap resourceMap = Application.getInstance(DesktopApplication1.class).getContext().getResourceMap(DesktopApplication1View.class);
+        topPanel.setBackground(resourceMap.getColor("topPanel.background")); // NOI18N
+        topPanel.setName("topPanel"); // NOI18N
 
-        main_receivedBoxPanel.setName("main_receivedBoxPanel"); // NOI18N
+        mailLabel.setText(resourceMap.getString("mailLabel.text")); // NOI18N
+        mailLabel.setName("mailLabel"); // NOI18N
+
+        ActionMap actionMap = Application.getInstance(DesktopApplication1.class).getContext().getActionMap(DesktopApplication1View.class, this);
+        newMailButton.setAction(actionMap.get("showNewMailDialog")); // NOI18N
+        newMailButton.setText(resourceMap.getString("newMailButton.text")); // NOI18N
+        newMailButton.setName("newMailButton"); // NOI18N
+
+        GroupLayout topPanelLayout = new GroupLayout(topPanel);
+        topPanel.setLayout(topPanelLayout);
+        topPanelLayout.setHorizontalGroup(
+            topPanelLayout.createParallelGroup(Alignment.LEADING)
+            .addGroup(Alignment.TRAILING, topPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(mailLabel, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(ComponentPlacement.RELATED, 500, Short.MAX_VALUE)
+                .addComponent(newMailButton)
+                .addContainerGap())
+        );
+        topPanelLayout.setVerticalGroup(
+            topPanelLayout.createParallelGroup(Alignment.LEADING)
+            .addGroup(topPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(topPanelLayout.createParallelGroup(Alignment.LEADING)
+                    .addComponent(newMailButton, Alignment.TRAILING)
+                    .addComponent(mailLabel, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        mailLabel.getAccessibleContext().setAccessibleDescription(resourceMap.getString("main_mailLabel.AccessibleContext.accessibleDescription")); // NOI18N
+
+        TabbedPane.setName("TabbedPane"); // NOI18N
+
+        receivedBoxPanel.setName("receivedBoxPanel"); // NOI18N
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
-        main_receivedList.setName("main_receivedList"); // NOI18N
-        jScrollPane1.setViewportView(main_receivedList);
+        receivedList.setName("receivedList"); // NOI18N
+        jScrollPane1.setViewportView(receivedList);
 
-        GroupLayout main_receivedBoxPanelLayout = new GroupLayout(main_receivedBoxPanel);
-        main_receivedBoxPanel.setLayout(main_receivedBoxPanelLayout);
-        main_receivedBoxPanelLayout.setHorizontalGroup(
-            main_receivedBoxPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addGroup(main_receivedBoxPanelLayout.createSequentialGroup()
+        GroupLayout receivedBoxPanelLayout = new GroupLayout(receivedBoxPanel);
+        receivedBoxPanel.setLayout(receivedBoxPanelLayout);
+        receivedBoxPanelLayout.setHorizontalGroup(
+            receivedBoxPanelLayout.createParallelGroup(Alignment.LEADING)
+            .addGroup(receivedBoxPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        main_receivedBoxPanelLayout.setVerticalGroup(
-            main_receivedBoxPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addGroup(main_receivedBoxPanelLayout.createSequentialGroup()
+        receivedBoxPanelLayout.setVerticalGroup(
+            receivedBoxPanelLayout.createParallelGroup(Alignment.LEADING)
+            .addGroup(receivedBoxPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        ResourceMap resourceMap = Application.getInstance(DesktopApplication1.class).getContext().getResourceMap(DesktopApplication1View.class);
-        main_TabbedPane.addTab(resourceMap.getString("main_receivedBoxPanel.TabConstraints.tabTitle"), main_receivedBoxPanel); // NOI18N
+        TabbedPane.addTab(resourceMap.getString("receivedBoxPanel.TabConstraints.tabTitle"), receivedBoxPanel); // NOI18N
 
-        main_sentBoxPanel.setName("main_sentBoxPanel"); // NOI18N
+        sentBoxPanel.setName("sentBoxPanel"); // NOI18N
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
-        main_sentList.setName("main_sentList"); // NOI18N
-        jScrollPane2.setViewportView(main_sentList);
+        sentList.setName("sentList"); // NOI18N
+        jScrollPane2.setViewportView(sentList);
 
-        GroupLayout main_sentBoxPanelLayout = new GroupLayout(main_sentBoxPanel);
-        main_sentBoxPanel.setLayout(main_sentBoxPanelLayout);
-        main_sentBoxPanelLayout.setHorizontalGroup(
-            main_sentBoxPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addGroup(main_sentBoxPanelLayout.createSequentialGroup()
+        GroupLayout sentBoxPanelLayout = new GroupLayout(sentBoxPanel);
+        sentBoxPanel.setLayout(sentBoxPanelLayout);
+        sentBoxPanelLayout.setHorizontalGroup(
+            sentBoxPanelLayout.createParallelGroup(Alignment.LEADING)
+            .addGroup(sentBoxPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        main_sentBoxPanelLayout.setVerticalGroup(
-            main_sentBoxPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addGroup(main_sentBoxPanelLayout.createSequentialGroup()
+        sentBoxPanelLayout.setVerticalGroup(
+            sentBoxPanelLayout.createParallelGroup(Alignment.LEADING)
+            .addGroup(sentBoxPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        main_TabbedPane.addTab(resourceMap.getString("main_sentBoxPanel.TabConstraints.tabTitle"), main_sentBoxPanel); // NOI18N
+        TabbedPane.addTab(resourceMap.getString("sentBoxPanel.TabConstraints.tabTitle"), sentBoxPanel); // NOI18N
 
-        main_contactsPanel.setMinimumSize(new Dimension(480, 480));
-        main_contactsPanel.setName("main_contactsPanel"); // NOI18N
-        main_contactsPanel.setPreferredSize(new Dimension(640, 480));
+        contactsPanel.setMinimumSize(new Dimension(480, 480));
+        contactsPanel.setName("contactsPanel"); // NOI18N
+        contactsPanel.setPreferredSize(new Dimension(640, 480));
 
         jScrollPane3.setName("jScrollPane3"); // NOI18N
 
-        main_contactsList.setName("main_contactsList"); // NOI18N
-        jScrollPane3.setViewportView(main_contactsList);
+        contactsList.setName("contactsList"); // NOI18N
+        jScrollPane3.setViewportView(contactsList);
 
-        GroupLayout main_contactsPanelLayout = new GroupLayout(main_contactsPanel);
-        main_contactsPanel.setLayout(main_contactsPanelLayout);
-        main_contactsPanelLayout.setHorizontalGroup(
-            main_contactsPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addGroup(main_contactsPanelLayout.createSequentialGroup()
+        deleteContactsButton.setAction(actionMap.get("onClickDeleteSelectedContactsButton")); // NOI18N
+        deleteContactsButton.setText(resourceMap.getString("deleteContactsButton.text")); // NOI18N
+        deleteContactsButton.setName("deleteContactsButton"); // NOI18N
+
+        contactsFileTextField.setText(resourceMap.getString("contactsFileTextField.text")); // NOI18N
+        contactsFileTextField.setName("contactsFileTextField"); // NOI18N
+
+        contactsFileLocationButton.setText(resourceMap.getString("contactsFileLocationButton.text")); // NOI18N
+        contactsFileLocationButton.setName("contactsFileLocationButton"); // NOI18N
+
+        contactsFileLoadButton.setText(resourceMap.getString("contactsFileLoadButton.text")); // NOI18N
+        contactsFileLoadButton.setName("contactsFileLoadButton"); // NOI18N
+
+        addContactButton.setText(resourceMap.getString("addContactButton.text")); // NOI18N
+        addContactButton.setName("addContactButton"); // NOI18N
+
+        addContactTextField.setText(resourceMap.getString("addContactTextField.text")); // NOI18N
+        addContactTextField.setName("addContactTextField"); // NOI18N
+
+        GroupLayout contactsPanelLayout = new GroupLayout(contactsPanel);
+        contactsPanel.setLayout(contactsPanelLayout);
+        contactsPanelLayout.setHorizontalGroup(
+            contactsPanelLayout.createParallelGroup(Alignment.LEADING)
+            .addGroup(contactsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+                .addGroup(contactsPanelLayout.createParallelGroup(Alignment.LEADING)
+                    .addComponent(jScrollPane3, GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
+                    .addGroup(contactsPanelLayout.createSequentialGroup()
+                        .addGroup(contactsPanelLayout.createParallelGroup(Alignment.TRAILING, false)
+                            .addComponent(deleteContactsButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(Alignment.LEADING, contactsPanelLayout.createSequentialGroup()
+                                .addComponent(addContactTextField, GroupLayout.PREFERRED_SIZE, 198, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(ComponentPlacement.UNRELATED)
+                                .addComponent(addContactButton)))
+                        .addGap(162, 162, 162)
+                        .addGroup(contactsPanelLayout.createParallelGroup(Alignment.LEADING)
+                            .addGroup(Alignment.TRAILING, contactsPanelLayout.createSequentialGroup()
+                                .addComponent(contactsFileTextField, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(ComponentPlacement.RELATED)
+                                .addComponent(contactsFileLocationButton, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(contactsFileLoadButton, GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))))
                 .addContainerGap())
         );
-        main_contactsPanelLayout.setVerticalGroup(
-            main_contactsPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addGroup(main_contactsPanelLayout.createSequentialGroup()
+        contactsPanelLayout.setVerticalGroup(
+            contactsPanelLayout.createParallelGroup(Alignment.LEADING)
+            .addGroup(Alignment.TRAILING, contactsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                .addPreferredGap(ComponentPlacement.RELATED)
+                .addGroup(contactsPanelLayout.createParallelGroup(Alignment.BASELINE)
+                    .addComponent(deleteContactsButton)
+                    .addComponent(contactsFileTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactsFileLocationButton))
+                .addPreferredGap(ComponentPlacement.RELATED)
+                .addGroup(contactsPanelLayout.createParallelGroup(Alignment.BASELINE)
+                    .addComponent(addContactTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addContactButton)
+                    .addComponent(contactsFileLoadButton))
                 .addContainerGap())
         );
 
-        main_TabbedPane.addTab(resourceMap.getString("main_contactsPanel.TabConstraints.tabTitle"), main_contactsPanel); // NOI18N
-
-        main_topPanel.setBackground(resourceMap.getColor("main_topPanel.background")); // NOI18N
-        main_topPanel.setName("main_topPanel"); // NOI18N
-
-        main_mailLabel.setText(resourceMap.getString("main_mailLabel.text")); // NOI18N
-        main_mailLabel.setName("main_mailLabel"); // NOI18N
-
-        ActionMap actionMap = Application.getInstance(DesktopApplication1.class).getContext().getActionMap(DesktopApplication1View.class, this);
-        main_newMailButton.setAction(actionMap.get("showNewMailDialog")); // NOI18N
-        main_newMailButton.setText(resourceMap.getString("main_newMailButton.text")); // NOI18N
-        main_newMailButton.setName("main_newMailButton"); // NOI18N
-
-        GroupLayout main_topPanelLayout = new GroupLayout(main_topPanel);
-        main_topPanel.setLayout(main_topPanelLayout);
-        main_topPanelLayout.setHorizontalGroup(
-            main_topPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addGroup(Alignment.TRAILING, main_topPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(main_mailLabel, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(ComponentPlacement.RELATED, 545, Short.MAX_VALUE)
-                .addComponent(main_newMailButton)
-                .addContainerGap())
-        );
-        main_topPanelLayout.setVerticalGroup(
-            main_topPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addGroup(main_topPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(main_topPanelLayout.createParallelGroup(Alignment.LEADING)
-                    .addComponent(main_newMailButton, Alignment.TRAILING)
-                    .addComponent(main_mailLabel, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        main_mailLabel.getAccessibleContext().setAccessibleDescription(resourceMap.getString("main_mailLabel.AccessibleContext.accessibleDescription")); // NOI18N
+        TabbedPane.addTab(resourceMap.getString("contactsPanel.TabConstraints.tabTitle"), contactsPanel); // NOI18N
 
         GroupLayout mainPanelLayout = new GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addComponent(main_topPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(topPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(main_TabbedPane, GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
+                .addComponent(TabbedPane, GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addComponent(main_topPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(topPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(main_TabbedPane, GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                .addComponent(TabbedPane, GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -347,11 +398,11 @@ public class DesktopApplication1View extends FrameView {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addComponent(statusPanelSeparator, GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
+            .addComponent(statusPanelSeparator, GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(ComponentPlacement.RELATED, 656, Short.MAX_VALUE)
+                .addPreferredGap(ComponentPlacement.RELATED, 611, Short.MAX_VALUE)
                 .addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -394,36 +445,69 @@ public class DesktopApplication1View extends FrameView {
         DesktopApplication1.getApplication().show(newMailPanel);        
     }
     
+//    public void updateContacts () {
+//        contactsList.setModel(new AbstractListModel() {
+//            String[] strings = DesktopApplication1.contacts.getAllContacts();
+//            public int getSize() { return strings.length; }
+//            public Object getElementAt(int i) { return strings[i]; }
+//        });
+//    }
+    
     public void updateContacts () {
-        main_contactsList.setModel(new AbstractListModel() {
-            String[] strings = DesktopApplication1.contacts.getAllContacts();
+        
+        final String [] names = new String[DesktopApplication1.contacts.getAllContacts().length];
+        
+        for (int i = 0; i < DesktopApplication1.contacts.getAllContacts().length; i++) {
+            names[i] = DesktopApplication1.contacts.getAllContacts()[i].getName();
+        }
+        
+        
+        contactsList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = names;
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
     }
 
+    @Action
+    public void onClickDeleteSelectedContactsButton() {
+        int [] indices = contactsList.getSelectedIndices();    
+        
+        for (int i = 0; i < indices.length; i++) {
+            DesktopApplication1.contacts.deleteContact(indices[i]);
+        }
+        
+        updateContacts();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JTabbedPane TabbedPane;
+    private JButton addContactButton;
+    private JTextField addContactTextField;
+    private JButton contactsFileLoadButton;
+    private JButton contactsFileLocationButton;
+    private JTextField contactsFileTextField;
+    private JList contactsList;
+    private JPanel contactsPanel;
+    private JButton deleteContactsButton;
     private JMenu editMenu;
     private JScrollPane jScrollPane1;
     private JScrollPane jScrollPane2;
     private JScrollPane jScrollPane3;
+    private JLabel mailLabel;
     private JPanel mainPanel;
-    private JTabbedPane main_TabbedPane;
-    private JList main_contactsList;
-    private JPanel main_contactsPanel;
-    private JLabel main_mailLabel;
-    private JButton main_newMailButton;
-    private JPanel main_receivedBoxPanel;
-    private JList main_receivedList;
-    private JPanel main_sentBoxPanel;
-    private JList main_sentList;
-    private JPanel main_topPanel;
     private JMenuBar menuBar;
+    private JButton newMailButton;
     private JProgressBar progressBar;
+    private JPanel receivedBoxPanel;
+    private JList receivedList;
+    private JPanel sentBoxPanel;
+    private JList sentList;
     private JMenuItem settingsMenuItem;
     private JLabel statusAnimationLabel;
     private JLabel statusMessageLabel;
     private JPanel statusPanel;
+    private JPanel topPanel;
     // End of variables declaration//GEN-END:variables
 
     private final Timer messageTimer;
