@@ -14,7 +14,7 @@ import javax.mail.internet.MimeBodyPart;
 
 /**
  *
- * @author TheCodeGuru
+ * @author kursat and TheCodeGuru
  */
 public class POP3Connection extends Server{
 
@@ -28,71 +28,56 @@ public class POP3Connection extends Server{
         msgs = null;
     }
     
-    public void connect()
-    throws Exception
-    {
+    public void connect() throws Exception {
         //Create an empty instance of property object and then set values.
         Properties props = new Properties();
         props.setProperty("mail.pop3.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.setProperty("mail.pop3.socketFactory.fallback", "false");
         props.setProperty("mail.pop3.port", Integer.toString(getPort()));
         props.setProperty("mail.pop3.socketFactory.port", Integer.toString(getPort()));
-        url = new URLName("pop3", getHost(), getPort(), "", from, password);
         //Creates URL for connection
+        url = new URLName("pop3", getHost(), getPort(), "", from, password);
+        //Creates session
         session = Session.getInstance(props, null);
         store = new POP3SSLStore(session, url);
         //Connects to POP3 Server
         store.connect();
     }
     
-    public void openFolder(String folderName)
-    throws Exception
-    {
+    public void openFolder(String folderName) throws Exception {
         //Creates POP3Folder object and ties it to folder
         folder = store.getFolder(folderName);
         if(folder == null)
             throw new Exception("Invalid folder Exception");
+        //Opens folder for read-write
         folder.open(Folder.READ_WRITE);
+        msgs = folder.getMessages();
     }
 
-    public void closeFolder()
-    throws Exception
-    {
+    public void closeFolder() throws Exception {
         folder.close(true);
     }
 
-    public int getMessageCount()
-    throws Exception
-    {
+    public int getMessageCount() throws Exception {
         return folder.getMessageCount();
     }
 
-    public int getNewMessageCount()
-    throws Exception
-    {
+    public int getNewMessageCount() throws Exception {
         return folder.getNewMessageCount();
     }
 
-    public void disconnect()
-    throws Exception
-    {
+    public void disconnect() throws Exception {
         store.close();
     }
 
-    public void takeAllMessages()
-    throws Exception
-    {
-        msgs = folder.getMessages();
+    public void takeMessages(Date time) throws Exception {
         folder.fetch(msgs, new FetchProfile());
+        //Evelope creation
         envelopes = new Envelope[msgs.length];
         for(int i = 0; i < msgs.length; i++)
-            envelopes[i] = dumpEnvelope(msgs[i]);
+            envelopes[i] = convertEnvelope(msgs[i], time);
     }
     
-    public Envelope[] getEnvlopes() {
-        return envelopes;
-    }
-
     /*public static int saveFile(File saveFile, Part part) throws Exception {
 
         BufferedOutputStream bos = new BufferedOutputStream( new FileOutputStream(saveFile) );
@@ -108,22 +93,26 @@ public class POP3Connection extends Server{
         is.close();
         return count;
     }*/
+    
     public void markAsRead(int ID){
         try {
-            msgs[ID].setFlag(Flags.Flag.DELETED, true);
+            msgs[ID].setFlag(Flags.Flag.SEEN, true);
         } catch (MessagingException ex) {
             Logger.getLogger(POP3Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     public void deleteMessages(int[] mailIDs){
         //deletion of chosen ids
         for(int i = 0; i < mailIDs.length; i++)
             deleteEnvelope(mailIDs[i]);
     }
+    
     public void deleteMessage(int mailID){
         //deletion of chosen id
         deleteEnvelope(mailID);
     }
+    
     private void deleteEnvelope(int ID){
         try {
             msgs[ID].setFlag(Flags.Flag.DELETED, true);
@@ -131,18 +120,24 @@ public class POP3Connection extends Server{
             Logger.getLogger(POP3Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private static Envelope dumpEnvelope(Message m) throws Exception
-    {
+    
+    private static Envelope convertEnvelope(Message m, Date time) throws Exception {
+        //Body variable which holds body of mail
         String body="";
+        //Is HTML variable
         Boolean html = false;
+        //Folder varible which holds folder info of envelope
+        //Fist variable initialization for recieved mail folder
         String folder = "RECIEVED";
+        //From variable initialization and set folder info
         String[] from = new String[m.getFrom().length];
         for ( int i = 0 ; i  < from.length; ++i ){
             from[i] = m.getFrom()[i].toString();
-            if ( from[i].contains(DesktopApplication1.config.getFrom())){
+            if ( from[i].contains(DesktopApplication1.config.getFrom()) ){
                 folder = "SENT";
             }
         }
+        //To variable initialization and set folder info
         String[] to = new String[m.getRecipients(Message.RecipientType.TO).length];
         for ( int i = 0 ; i  < to.length; ++i ){
             to[i] = m.getRecipients(Message.RecipientType.TO)[i].toString();
@@ -150,15 +145,23 @@ public class POP3Connection extends Server{
                 folder = "BOTH";
             }
         }
+        //CC variable initialization and set folder info
         String[] cc = null;
         if ( m.getRecipients(Message.RecipientType.CC) != null){
             cc = new String[m.getRecipients(Message.RecipientType.CC).length];
             for ( int i = 0 ; i  < cc.length; ++i ){
                 cc[i] = m.getRecipients(Message.RecipientType.CC)[i].toString();
+                if ( cc[i].contains(DesktopApplication1.config.getFrom()) && folder.compareTo("SENT") == 0)
+                    folder = "BOTH";
             }
         }
+        //Subject initialization
         String subject= m.getSubject();
+        //Date initialization 
         Date dateofMail= m.getSentDate();
+        //To return null because this mail has been taken before
+        if ( time.after(dateofMail) )
+            return null;
         Object content = m.getContent();
         //If instance of mail content is Just String
         if(content instanceof String){
@@ -183,21 +186,16 @@ public class POP3Connection extends Server{
                     else if (mbp.isMimeType("TEXT/HTML")) {
                         body += mbp.getContent().toString();
                     }
-                }/* else if ((disposition != null) && (disposition.equals(Part.ATTACHMENT) || disposition.equals(Part.INLINE) || disposition.equals("ATTACHMENT") || disposition.equals("INLINE")) )
-                {
-                    // Check if plain
-                    MimeBodyPart mbp = (MimeBodyPart)part;
-                    if (mbp.isMimeType("text/plain")) {
-                        body += (String)mbp.getContent();
-                    }
-                    else if (mbp.isMimeType("TEXT/HTML")) {
-                        body += mbp.getContent().toString();
-                    }
-                }*/
+                }
             }
         }
         return new Envelope(subject, body, html, folder, from, cc, to);
     }
+    
+    public Envelope[] getEnvlopes() {
+        return envelopes;
+    }
+    
     private Session session;
     private POP3SSLStore store;
     private String password;
