@@ -23,6 +23,9 @@ public class NewMailDialog extends javax.swing.JDialog {
         super(parent);
         initComponents();
         
+        updateContacts();
+        chosenTextField = toTextField;
+        
         messageTextArea.setText("Hello,\n\nRegards, " + DesktopApplication1.config.getName() );
     }
 
@@ -70,9 +73,19 @@ public class NewMailDialog extends javax.swing.JDialog {
 
         toTextField.setText(resourceMap.getString("toTextField.text")); // NOI18N
         toTextField.setName("toTextField"); // NOI18N
+        toTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                setChosenTextFieldTO(evt);
+            }
+        });
 
         ccTextField.setText(resourceMap.getString("ccTextField.text")); // NOI18N
         ccTextField.setName("ccTextField"); // NOI18N
+        ccTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                setChosenTextFieldCC(evt);
+            }
+        });
 
         subjectTextField.setText(resourceMap.getString("subjectTextField.text")); // NOI18N
         subjectTextField.setToolTipText(resourceMap.getString("subjectTextField.toolTipText")); // NOI18N
@@ -157,6 +170,7 @@ public class NewMailDialog extends javax.swing.JDialog {
         contactList.setName("contactList"); // NOI18N
         jScrollPane1.setViewportView(contactList);
 
+        addContactButton.setAction(actionMap.get("onClickAddButton")); // NOI18N
         addContactButton.setText(resourceMap.getString("addContactButton.text")); // NOI18N
         addContactButton.setName("addContactButton"); // NOI18N
 
@@ -202,6 +216,14 @@ public class NewMailDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setChosenTextFieldTO(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_setChosenTextFieldTO
+        chosenTextField = toTextField;
+    }//GEN-LAST:event_setChosenTextFieldTO
+
+    private void setChosenTextFieldCC(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_setChosenTextFieldCC
+        chosenTextField = ccTextField;
+    }//GEN-LAST:event_setChosenTextFieldCC
+
     /**
      * @param args the command line arguments
      */
@@ -232,7 +254,6 @@ public class NewMailDialog extends javax.swing.JDialog {
                 //TODO: Warning: No Message Body!
             }
             
-            //TODO: Get Configuration
             String host = DesktopApplication1.config.getSMTPHost();
             String port = DesktopApplication1.config.getSMTPPort();
             String from = DesktopApplication1.config.getFrom();
@@ -241,6 +262,15 @@ public class NewMailDialog extends javax.swing.JDialog {
             String [] to = toTextField.getText().split("; ");
             String [] cc = ccTextField.getText().split("; ");
             
+            System.out.println("TOs:");
+            for (int i = 0; i < to.length; i++) {
+                System.out.println(to[i]);
+            }            
+            System.out.println("CCs:");
+            for (int i = 0; i < cc.length; i++) {
+                System.out.println(cc[i]);
+            }
+            
             SMTPConnection connection = new SMTPConnection(host, Integer.parseInt(port), from, pass);
             connection.sendMail(subjectTextField.getText(), messageTextArea.getText(), to, cc);
             
@@ -248,7 +278,34 @@ public class NewMailDialog extends javax.swing.JDialog {
             //TODO: Error: No To List!
         }
         
+        dispose();
+        
     }
+
+    @Action
+    public void onClickAddButton() {
+        int [] indices = contactList.getSelectedIndices();
+        
+        for (int i = 0; i < indices.length; i++) {
+            if (chosenTextField.getText().length() > 0) {
+                chosenTextField.setText(chosenTextField.getText() + "; " + contactList.getModel().getElementAt(indices[i]));
+                System.out.println(indices[i]);
+            } else {
+                chosenTextField.setText("" + contactList.getModel().getElementAt(indices[i]));
+                System.out.println(indices[i]);
+            }
+            
+        }
+    }
+    
+    public void updateContacts () {
+        contactList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = DesktopApplication1.contacts.getAllContacts();
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addContactButton;
     private javax.swing.JLabel ccLabel;
@@ -266,4 +323,6 @@ public class NewMailDialog extends javax.swing.JDialog {
     private javax.swing.JLabel toLabel;
     private javax.swing.JTextField toTextField;
     // End of variables declaration//GEN-END:variables
+
+    private javax.swing.JTextField chosenTextField;
 }

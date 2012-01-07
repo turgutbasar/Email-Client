@@ -12,7 +12,9 @@ import org.jdesktop.application.SingleFrameApplication;
  */
 public class DesktopApplication1 extends SingleFrameApplication {
     
-    public static Configuration config = new Configuration();
+    public static Configuration config;
+    public static Contacts contacts;
+    
     
     /**
      * At startup create and show the main frame of the application.
@@ -44,6 +46,7 @@ public class DesktopApplication1 extends SingleFrameApplication {
         
         //Get Config
         config = new Configuration();
+        contacts = new Contacts();
         
         launch(DesktopApplication1.class, args); 
     }

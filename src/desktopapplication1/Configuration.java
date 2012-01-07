@@ -94,7 +94,6 @@ public class Configuration {
             
             //configFile.list(System.out);
         } catch (Exception e) {
-            //TODO: Handle Exception.
             System.out.println("Read Exception:" + e.getMessage());
         }
     }
