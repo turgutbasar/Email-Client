@@ -288,10 +288,10 @@ public class NewMailDialog extends javax.swing.JDialog {
         
         for (int i = 0; i < indices.length; i++) {
             if (chosenTextField.getText().length() > 0) {
-                chosenTextField.setText(chosenTextField.getText() + "; " + DesktopApplication1.contacts.getAllContacts()[i].getEmail());
+                chosenTextField.setText(chosenTextField.getText() + "; " + DesktopApplication1.contacts.getAllContacts()[indices[i]].getEmail());
                 System.out.println(indices[i]);
             } else {
-                chosenTextField.setText("" + DesktopApplication1.contacts.getAllContacts()[i].getEmail());
+                chosenTextField.setText("" + DesktopApplication1.contacts.getAllContacts()[indices[i]].getEmail());
                 System.out.println(indices[i]);
             }
             
