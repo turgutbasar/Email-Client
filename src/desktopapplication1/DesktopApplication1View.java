@@ -102,6 +102,14 @@ public class DesktopApplication1View extends FrameView {
             }
         });
         POP3Connection p = new POP3Connection("pop.gmail.com",995,"turgutbasar@gmail.com","123asd123");
+        try {
+            p.connect();
+            p.openFolder("INBOX");
+            p.printAllMessages();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
 
     @Action
