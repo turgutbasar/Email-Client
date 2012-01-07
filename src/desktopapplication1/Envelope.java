@@ -7,9 +7,9 @@ package desktopapplication1;
  *
  * @author kursat and TheCodeGuru
  */
-public class Envlope {
+public class Envelope {
 
-    public Envlope(String subject, String body, Boolean isHtml, String folder, String[] from, String[] cc, String[] to) {
+    public Envelope(String subject, String body, Boolean isHtml, String folder, String[] from, String[] cc, String[] to) {
         this.subject = subject;
         this.body = body;
         this.isHtml = isHtml;

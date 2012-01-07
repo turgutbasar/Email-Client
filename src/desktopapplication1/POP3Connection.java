@@ -84,12 +84,12 @@ public class POP3Connection extends Server{
     {
         msgs = folder.getMessages();
         folder.fetch(msgs, new FetchProfile());
-        envelopes = new Envlope[msgs.length];
+        envelopes = new Envelope[msgs.length];
         for(int i = 0; i < msgs.length; i++)
             envelopes[i] = dumpEnvelope(msgs[i]);
     }
     
-    public Envlope[] getEnvlopes() {
+    public Envelope[] getEnvlopes() {
         return envelopes;
     }
 
@@ -131,7 +131,7 @@ public class POP3Connection extends Server{
             Logger.getLogger(POP3Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private static Envlope dumpEnvelope(Message m) throws Exception
+    private static Envelope dumpEnvelope(Message m) throws Exception
     {
         String body="";
         Boolean html = false;
@@ -196,7 +196,7 @@ public class POP3Connection extends Server{
                 }*/
             }
         }
-        return new Envlope(subject, body, html, folder, from, cc, to);
+        return new Envelope(subject, body, html, folder, from, cc, to);
     }
     private Session session;
     private POP3SSLStore store;
@@ -208,7 +208,7 @@ public class POP3Connection extends Server{
     URLName url;
     /*public static String receiving_attachments="D:\\download";*/
     private String from;
-    private Envlope[] envelopes;
+    private Envelope[] envelopes;
     private Message[] msgs;
     
 }
