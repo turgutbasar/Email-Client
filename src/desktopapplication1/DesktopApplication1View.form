@@ -247,6 +247,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="main_mailLabel.text"/>
                 <Property name="name" type="java.lang.String" value="main_mailLabel" noResource="true"/>
               </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" resourceKey="main_mailLabel.AccessibleContext.accessibleDescription"/>
+              </AccessibilityProperties>
             </Component>
             <Component class="javax.swing.JButton" name="main_newMailButton">
               <Properties>
@@ -425,7 +428,7 @@
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="2"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
-    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>

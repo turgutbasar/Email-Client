@@ -4,13 +4,35 @@
 
 package desktopapplication1;
 
+import java.awt.Dimension;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ActionMap;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
 import org.jdesktop.application.Action;
+import org.jdesktop.application.Application;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import javax.mail.MessagingException;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
@@ -79,6 +101,7 @@ public class DesktopApplication1View extends FrameView {
                 }
             }
         });
+        POP3Connection p = new POP3Connection("pop.gmail.com",995,"turgutbasar@gmail.com","123asd123");
     }
 
     @Action
@@ -100,32 +123,32 @@ public class DesktopApplication1View extends FrameView {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainPanel = new javax.swing.JPanel();
-        main_TabbedPane = new javax.swing.JTabbedPane();
-        main_receivedBoxPanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        main_receivedList = new javax.swing.JList();
-        main_sentBoxPanel = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        main_sentList = new javax.swing.JList();
-        main_contactsPanel = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        main_contactsList = new javax.swing.JList();
-        main_topPanel = new javax.swing.JPanel();
-        main_mailLabel = new javax.swing.JLabel();
-        main_newMailButton = new javax.swing.JButton();
-        menuBar = new javax.swing.JMenuBar();
-        javax.swing.JMenu fileMenu = new javax.swing.JMenu();
-        settingsMenuItem = new javax.swing.JMenuItem();
-        javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        javax.swing.JMenu helpMenu = new javax.swing.JMenu();
-        javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
-        statusPanel = new javax.swing.JPanel();
-        javax.swing.JSeparator statusPanelSeparator = new javax.swing.JSeparator();
-        statusMessageLabel = new javax.swing.JLabel();
-        statusAnimationLabel = new javax.swing.JLabel();
-        progressBar = new javax.swing.JProgressBar();
+        mainPanel = new JPanel();
+        main_TabbedPane = new JTabbedPane();
+        main_receivedBoxPanel = new JPanel();
+        jScrollPane1 = new JScrollPane();
+        main_receivedList = new JList();
+        main_sentBoxPanel = new JPanel();
+        jScrollPane2 = new JScrollPane();
+        main_sentList = new JList();
+        main_contactsPanel = new JPanel();
+        jScrollPane3 = new JScrollPane();
+        main_contactsList = new JList();
+        main_topPanel = new JPanel();
+        main_mailLabel = new JLabel();
+        main_newMailButton = new JButton();
+        menuBar = new JMenuBar();
+        JMenu fileMenu = new JMenu();
+        settingsMenuItem = new JMenuItem();
+        JMenuItem exitMenuItem = new JMenuItem();
+        editMenu = new JMenu();
+        JMenu helpMenu = new JMenu();
+        JMenuItem aboutMenuItem = new JMenuItem();
+        statusPanel = new JPanel();
+        JSeparator statusPanelSeparator = new JSeparator();
+        statusMessageLabel = new JLabel();
+        statusAnimationLabel = new JLabel();
+        progressBar = new JProgressBar();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -138,24 +161,24 @@ public class DesktopApplication1View extends FrameView {
         main_receivedList.setName("main_receivedList"); // NOI18N
         jScrollPane1.setViewportView(main_receivedList);
 
-        javax.swing.GroupLayout main_receivedBoxPanelLayout = new javax.swing.GroupLayout(main_receivedBoxPanel);
+        GroupLayout main_receivedBoxPanelLayout = new GroupLayout(main_receivedBoxPanel);
         main_receivedBoxPanel.setLayout(main_receivedBoxPanelLayout);
         main_receivedBoxPanelLayout.setHorizontalGroup(
-            main_receivedBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            main_receivedBoxPanelLayout.createParallelGroup(Alignment.LEADING)
             .addGroup(main_receivedBoxPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
                 .addContainerGap())
         );
         main_receivedBoxPanelLayout.setVerticalGroup(
-            main_receivedBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            main_receivedBoxPanelLayout.createParallelGroup(Alignment.LEADING)
             .addGroup(main_receivedBoxPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getResourceMap(DesktopApplication1View.class);
+        ResourceMap resourceMap = Application.getInstance(DesktopApplication1.class).getContext().getResourceMap(DesktopApplication1View.class);
         main_TabbedPane.addTab(resourceMap.getString("main_receivedBoxPanel.TabConstraints.tabTitle"), main_receivedBoxPanel); // NOI18N
 
         main_sentBoxPanel.setName("main_sentBoxPanel"); // NOI18N
@@ -165,48 +188,48 @@ public class DesktopApplication1View extends FrameView {
         main_sentList.setName("main_sentList"); // NOI18N
         jScrollPane2.setViewportView(main_sentList);
 
-        javax.swing.GroupLayout main_sentBoxPanelLayout = new javax.swing.GroupLayout(main_sentBoxPanel);
+        GroupLayout main_sentBoxPanelLayout = new GroupLayout(main_sentBoxPanel);
         main_sentBoxPanel.setLayout(main_sentBoxPanelLayout);
         main_sentBoxPanelLayout.setHorizontalGroup(
-            main_sentBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            main_sentBoxPanelLayout.createParallelGroup(Alignment.LEADING)
             .addGroup(main_sentBoxPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
                 .addContainerGap())
         );
         main_sentBoxPanelLayout.setVerticalGroup(
-            main_sentBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            main_sentBoxPanelLayout.createParallelGroup(Alignment.LEADING)
             .addGroup(main_sentBoxPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         main_TabbedPane.addTab(resourceMap.getString("main_sentBoxPanel.TabConstraints.tabTitle"), main_sentBoxPanel); // NOI18N
 
-        main_contactsPanel.setMinimumSize(new java.awt.Dimension(480, 480));
+        main_contactsPanel.setMinimumSize(new Dimension(480, 480));
         main_contactsPanel.setName("main_contactsPanel"); // NOI18N
-        main_contactsPanel.setPreferredSize(new java.awt.Dimension(640, 480));
+        main_contactsPanel.setPreferredSize(new Dimension(640, 480));
 
         jScrollPane3.setName("jScrollPane3"); // NOI18N
 
         main_contactsList.setName("main_contactsList"); // NOI18N
         jScrollPane3.setViewportView(main_contactsList);
 
-        javax.swing.GroupLayout main_contactsPanelLayout = new javax.swing.GroupLayout(main_contactsPanel);
+        GroupLayout main_contactsPanelLayout = new GroupLayout(main_contactsPanel);
         main_contactsPanel.setLayout(main_contactsPanelLayout);
         main_contactsPanelLayout.setHorizontalGroup(
-            main_contactsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            main_contactsPanelLayout.createParallelGroup(Alignment.LEADING)
             .addGroup(main_contactsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
                 .addContainerGap())
         );
         main_contactsPanelLayout.setVerticalGroup(
-            main_contactsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            main_contactsPanelLayout.createParallelGroup(Alignment.LEADING)
             .addGroup(main_contactsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -218,48 +241,50 @@ public class DesktopApplication1View extends FrameView {
         main_mailLabel.setText(resourceMap.getString("main_mailLabel.text")); // NOI18N
         main_mailLabel.setName("main_mailLabel"); // NOI18N
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getActionMap(DesktopApplication1View.class, this);
+        ActionMap actionMap = Application.getInstance(DesktopApplication1.class).getContext().getActionMap(DesktopApplication1View.class, this);
         main_newMailButton.setAction(actionMap.get("showNewMailDialog")); // NOI18N
         main_newMailButton.setText(resourceMap.getString("main_newMailButton.text")); // NOI18N
         main_newMailButton.setName("main_newMailButton"); // NOI18N
 
-        javax.swing.GroupLayout main_topPanelLayout = new javax.swing.GroupLayout(main_topPanel);
+        GroupLayout main_topPanelLayout = new GroupLayout(main_topPanel);
         main_topPanel.setLayout(main_topPanelLayout);
         main_topPanelLayout.setHorizontalGroup(
-            main_topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, main_topPanelLayout.createSequentialGroup()
+            main_topPanelLayout.createParallelGroup(Alignment.LEADING)
+            .addGroup(Alignment.TRAILING, main_topPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(main_mailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 545, Short.MAX_VALUE)
+                .addComponent(main_mailLabel, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(ComponentPlacement.RELATED, 545, Short.MAX_VALUE)
                 .addComponent(main_newMailButton)
                 .addContainerGap())
         );
         main_topPanelLayout.setVerticalGroup(
-            main_topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            main_topPanelLayout.createParallelGroup(Alignment.LEADING)
             .addGroup(main_topPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(main_topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(main_newMailButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(main_mailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+                .addGroup(main_topPanelLayout.createParallelGroup(Alignment.LEADING)
+                    .addComponent(main_newMailButton, Alignment.TRAILING)
+                    .addComponent(main_mailLabel, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        main_mailLabel.getAccessibleContext().setAccessibleDescription(resourceMap.getString("main_mailLabel.AccessibleContext.accessibleDescription")); // NOI18N
+
+        GroupLayout mainPanelLayout = new GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main_topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            mainPanelLayout.createParallelGroup(Alignment.LEADING)
+            .addComponent(main_topPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(main_TabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
+                .addComponent(main_TabbedPane, GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
         mainPanelLayout.setVerticalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            mainPanelLayout.createParallelGroup(Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addComponent(main_topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(main_topPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(main_TabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                .addComponent(main_TabbedPane, GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -298,34 +323,34 @@ public class DesktopApplication1View extends FrameView {
 
         statusMessageLabel.setName("statusMessageLabel"); // NOI18N
 
-        statusAnimationLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        statusAnimationLabel.setHorizontalAlignment(SwingConstants.LEFT);
         statusAnimationLabel.setName("statusAnimationLabel"); // NOI18N
 
         progressBar.setName("progressBar"); // NOI18N
 
-        javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
+        GroupLayout statusPanelLayout = new GroupLayout(statusPanel);
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
-            statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
+            statusPanelLayout.createParallelGroup(Alignment.LEADING)
+            .addComponent(statusPanelSeparator, GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 656, Short.MAX_VALUE)
-                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(ComponentPlacement.RELATED, 656, Short.MAX_VALUE)
+                .addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
                 .addContainerGap())
         );
         statusPanelLayout.setVerticalGroup(
-            statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            statusPanelLayout.createParallelGroup(Alignment.LEADING)
             .addGroup(statusPanelLayout.createSequentialGroup()
-                .addComponent(statusPanelSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(statusPanelSeparator, GroupLayout.PREFERRED_SIZE, 2, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(statusPanelLayout.createParallelGroup(Alignment.BASELINE)
                     .addComponent(statusMessageLabel)
                     .addComponent(statusAnimationLabel)
-                    .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3))
         );
 
@@ -355,27 +380,27 @@ public class DesktopApplication1View extends FrameView {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu editMenu;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JPanel mainPanel;
-    private javax.swing.JTabbedPane main_TabbedPane;
-    private javax.swing.JList main_contactsList;
-    private javax.swing.JPanel main_contactsPanel;
-    private javax.swing.JLabel main_mailLabel;
-    private javax.swing.JButton main_newMailButton;
-    private javax.swing.JPanel main_receivedBoxPanel;
-    private javax.swing.JList main_receivedList;
-    private javax.swing.JPanel main_sentBoxPanel;
-    private javax.swing.JList main_sentList;
-    private javax.swing.JPanel main_topPanel;
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JProgressBar progressBar;
-    private javax.swing.JMenuItem settingsMenuItem;
-    private javax.swing.JLabel statusAnimationLabel;
-    private javax.swing.JLabel statusMessageLabel;
-    private javax.swing.JPanel statusPanel;
+    private JMenu editMenu;
+    private JScrollPane jScrollPane1;
+    private JScrollPane jScrollPane2;
+    private JScrollPane jScrollPane3;
+    private JPanel mainPanel;
+    private JTabbedPane main_TabbedPane;
+    private JList main_contactsList;
+    private JPanel main_contactsPanel;
+    private JLabel main_mailLabel;
+    private JButton main_newMailButton;
+    private JPanel main_receivedBoxPanel;
+    private JList main_receivedList;
+    private JPanel main_sentBoxPanel;
+    private JList main_sentList;
+    private JPanel main_topPanel;
+    private JMenuBar menuBar;
+    private JProgressBar progressBar;
+    private JMenuItem settingsMenuItem;
+    private JLabel statusAnimationLabel;
+    private JLabel statusMessageLabel;
+    private JPanel statusPanel;
     // End of variables declaration//GEN-END:variables
 
     private final Timer messageTimer;
