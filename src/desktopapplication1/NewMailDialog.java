@@ -288,10 +288,10 @@ public class NewMailDialog extends javax.swing.JDialog {
         
         for (int i = 0; i < indices.length; i++) {
             if (chosenTextField.getText().length() > 0) {
-                chosenTextField.setText(chosenTextField.getText() + "; " + contactList.getModel().getElementAt(indices[i]));
+                chosenTextField.setText(chosenTextField.getText() + "; " + DesktopApplication1.contacts.getAllContacts()[indices[i]].getEmail());
                 System.out.println(indices[i]);
             } else {
-                chosenTextField.setText("" + contactList.getModel().getElementAt(indices[i]));
+                chosenTextField.setText("" + DesktopApplication1.contacts.getAllContacts()[indices[i]].getEmail());
                 System.out.println(indices[i]);
             }
             
@@ -299,8 +299,15 @@ public class NewMailDialog extends javax.swing.JDialog {
     }
     
     public void updateContacts () {
+        
+        final String [] names = new String[DesktopApplication1.contacts.getAllContacts().length];
+        
+        for (int i = 0; i < DesktopApplication1.contacts.getAllContacts().length; i++) {
+            names[i] = DesktopApplication1.contacts.getAllContacts()[i].getName();
+        }
+        
         contactList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = DesktopApplication1.contacts.getAllContacts();
+            String[] strings = names;
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });

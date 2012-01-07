@@ -15,20 +15,32 @@ public class Contacts {
         readFromFile();
     }
     
-    public String [] getAllContacts () {
+    public Contact[] getAllContacts () {
         //return emails;
         //TODO: Fix this
         
-        String kamil = "turgutbasar@gmail.com; kursadyo@gmail.com; kursat.yigitoglu@gmail.com; naber@gmail.com";
-        return kamil.split(";");
+        String names = "Başar Turgut; Kürşat Yiğitoğlu; Kürşat Yiğitoğlu2; Kamil";
+        String emails = "turgutbasar@gmail.com; kursadyo@gmail.com; kursat.yigitoglu@gmail.com; naber@gmail.com";
+        
+        String [] namesArr =names.split(";");
+        String [] emailsArr =emails.split(";");
+        
+        Contact [] myContactArr = new Contact[namesArr.length];
+        
+        
+        for (int i = 0; i < namesArr.length; i++) {
+            myContactArr[i] = new Contact( emailsArr[i], namesArr[i]);
+        }
+        
+        return myContactArr;
         
     }
     
-    public void addContact ( String email ) {
+    public void addContact ( String email, String name ) {
         
     }
     
-    public void deleteContact ( String email ) {
+    public void deleteContact ( int id ) {
         
     }
     
@@ -40,6 +52,6 @@ public class Contacts {
         
     }
     
-    private String [] emails;
+    private Contact [] contacts;
     
 }
