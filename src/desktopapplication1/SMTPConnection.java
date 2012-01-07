@@ -22,6 +22,9 @@ public class SMTPConnection extends Server{
     
     public void sendMail (String subject, String text, String[] to, String [] cc) {
         try {
+            
+            System.out.println(to);
+            
             String host = this.getHost();
             String from = this.getFrom();
             String pass = this.getPassword();
@@ -58,14 +61,17 @@ public class SMTPConnection extends Server{
             
             
             // To get the array CC addresses
-            InternetAddress[] ccAddresses = new InternetAddress[cc.length];
-            
-            for( int i=0; i < cc.length; i++ ) { 
-                ccAddresses[i] = new InternetAddress(cc[i]);
-            }
-            
-            for( int i=0; i < ccAddresses.length; i++) { 
-                message.addRecipient(Message.RecipientType.CC, ccAddresses[i]);                
+            if (cc[0].contains("@")) {
+                System.out.println("CC ye girdi amık");
+                InternetAddress[] ccAddresses = new InternetAddress[cc.length];
+                
+                for (int i = 0; i < cc.length; i++) {                    
+                    ccAddresses[i] = new InternetAddress(cc[i]);
+                }
+                
+                for (int i = 0; i < ccAddresses.length; i++) {                    
+                    message.addRecipient(Message.RecipientType.CC, ccAddresses[i]);                    
+                }
             }
             
             message.setSubject(subject);
@@ -77,8 +83,7 @@ public class SMTPConnection extends Server{
             transport.close();
 
         } catch (Exception e) {
-            //TODO: Handle Exception.
-            System.out.println(e.getMessage());
+            System.out.println( "SendMail Exception:" + e.getMessage());
         }
     }
     

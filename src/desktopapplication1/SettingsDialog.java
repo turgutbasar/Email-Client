@@ -15,6 +15,8 @@ import org.jdesktop.application.Action;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JFileChooser;
+import javax.swing.JTextField;
 
 /**
  *
@@ -164,12 +166,16 @@ public class SettingsDialog extends javax.swing.JDialog {
         settingsLocationTextField.setText(resourceMap.getString("settingsLocationTextField.text")); // NOI18N
         settingsLocationTextField.setName("settingsLocationTextField"); // NOI18N
 
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getActionMap(SettingsDialog.class, this);
+        mailsLocationButton.setAction(actionMap.get("onClickMailsLocationButton")); // NOI18N
         mailsLocationButton.setText(resourceMap.getString("mailsLocationButton.text")); // NOI18N
         mailsLocationButton.setName("mailsLocationButton"); // NOI18N
 
+        contactsLocationButton.setAction(actionMap.get("onClickContactsLocationButton")); // NOI18N
         contactsLocationButton.setText(resourceMap.getString("contactsLocationButton.text")); // NOI18N
         contactsLocationButton.setName("contactsLocationButton"); // NOI18N
 
+        settingsLocationButton.setAction(actionMap.get("onClickSettingsLocationButton")); // NOI18N
         settingsLocationButton.setText(resourceMap.getString("settingsLocationButton.text")); // NOI18N
         settingsLocationButton.setName("settingsLocationButton"); // NOI18N
 
@@ -218,7 +224,6 @@ public class SettingsDialog extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getActionMap(SettingsDialog.class, this);
         applySettingsButton.setAction(actionMap.get("onClickApplyButton")); // NOI18N
         applySettingsButton.setText(resourceMap.getString("applySettingsButton.text")); // NOI18N
         applySettingsButton.setName("applySettingsButton"); // NOI18N
@@ -375,6 +380,48 @@ public class SettingsDialog extends javax.swing.JDialog {
         dispose();
     }
 
+    @Action
+    public void callFileChooser( JTextField textField ) {
+            int result;
+         
+        fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new java.io.File("."));
+        fileChooser.setDialogTitle("chooserTitle");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        
+        //
+        // disable the "All files" option.
+        //
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        //   
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            System.out.println("getCurrentDirectory(): "
+                +  fileChooser.getCurrentDirectory());
+            System.out.println("getSelectedFile() : "
+                +  fileChooser.getSelectedFile());
+        }
+        else {
+            System.out.println("No Selection ");
+        }
+        
+        textField.setText(fileChooser.getSelectedFile().getPath());
+    }
+
+    @Action
+    public void onClickMailsLocationButton() {
+        callFileChooser(mailsLocationTextField);
+    }
+
+    @Action
+    public void onClickContactsLocationButton() {
+        callFileChooser(contactsLocationTextField);
+    }
+
+    @Action
+    public void onClickSettingsLocationButton() {
+        callFileChooser(settingsLocationTextField);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel POP3HostLabel;
@@ -407,4 +454,5 @@ public class SettingsDialog extends javax.swing.JDialog {
     private javax.swing.JPanel userInfoPanel;
     // End of variables declaration//GEN-END:variables
 
+    private javax.swing.JFileChooser fileChooser;
 }

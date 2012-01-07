@@ -125,12 +125,18 @@
             <Property name="text" type="java.lang.String" resourceKey="toTextField.text"/>
             <Property name="name" type="java.lang.String" value="toTextField" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="setChosenTextFieldTO"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="ccTextField">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="ccTextField.text"/>
             <Property name="name" type="java.lang.String" value="ccTextField" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="setChosenTextFieldCC"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="subjectTextField">
           <Properties>
@@ -267,6 +273,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="addContactButton">
           <Properties>
+            <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+              <action class="desktopapplication1.NewMailDialog" id="onClickAddButton" methodName="onClickAddButton"/>
+            </Property>
             <Property name="text" type="java.lang.String" resourceKey="addContactButton.text"/>
             <Property name="name" type="java.lang.String" value="addContactButton" noResource="true"/>
           </Properties>

@@ -5,8 +5,7 @@
 package desktopapplication1;
 
 import java.awt.Dimension;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.AbstractListModel;
 import javax.swing.ActionMap;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -31,12 +30,12 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import javax.mail.MessagingException;
+import javax.swing.DefaultListModel;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.ListModel;
 
 /**
  * The application's main frame.
@@ -101,6 +100,9 @@ public class DesktopApplication1View extends FrameView {
                 }
             }
         });
+        
+        updateContacts();
+
         //////////////////////////
         POP3Connection p = new POP3Connection(DesktopApplication1.config.getPOP3Host(),Integer.parseInt(DesktopApplication1.config.getPOP3Port()),DesktopApplication1.config.getFrom(),DesktopApplication1.config.getPass());
         Envlope[] envlopes = null;
@@ -391,6 +393,14 @@ public class DesktopApplication1View extends FrameView {
         }
         DesktopApplication1.getApplication().show(newMailPanel);        
     }
+    
+    public void updateContacts () {
+        main_contactsList.setModel(new AbstractListModel() {
+            String[] strings = DesktopApplication1.contacts.getAllContacts();
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JMenu editMenu;
@@ -425,5 +435,6 @@ public class DesktopApplication1View extends FrameView {
     private JDialog aboutBox;
     private JDialog settingsPanel;
     private JDialog newMailPanel;
+    private DefaultListModel contactsListModel;
 
 }

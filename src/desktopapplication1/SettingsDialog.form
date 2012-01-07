@@ -265,18 +265,27 @@
         </Component>
         <Component class="javax.swing.JButton" name="mailsLocationButton">
           <Properties>
+            <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+              <action class="desktopapplication1.SettingsDialog" id="onClickMailsLocationButton" methodName="onClickMailsLocationButton"/>
+            </Property>
             <Property name="text" type="java.lang.String" resourceKey="mailsLocationButton.text"/>
             <Property name="name" type="java.lang.String" value="mailsLocationButton" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="contactsLocationButton">
           <Properties>
+            <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+              <action class="desktopapplication1.SettingsDialog" id="onClickContactsLocationButton" methodName="onClickContactsLocationButton"/>
+            </Property>
             <Property name="text" type="java.lang.String" resourceKey="contactsLocationButton.text"/>
             <Property name="name" type="java.lang.String" value="contactsLocationButton" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="settingsLocationButton">
           <Properties>
+            <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+              <action class="desktopapplication1.SettingsDialog" id="onClickSettingsLocationButton" methodName="onClickSettingsLocationButton"/>
+            </Property>
             <Property name="text" type="java.lang.String" resourceKey="settingsLocationButton.text"/>
             <Property name="name" type="java.lang.String" value="settingsLocationButton" noResource="true"/>
           </Properties>
