@@ -45,12 +45,13 @@ public class POP3Connection extends Server{
     }
     
     public void openFolder(String folderName) throws Exception {
-        //Creates POP3Folder object and ties it to folder
+        //Creates Folder object and ties it to folder
         folder = store.getFolder(folderName);
         if(folder == null)
             throw new Exception("Invalid folder Exception");
         //Opens folder for read-write
         folder.open(Folder.READ_WRITE);
+        //Just take handles of messages, NOT WHOLE MESSAGE!
         msgs = folder.getMessages();
     }
 
@@ -72,7 +73,7 @@ public class POP3Connection extends Server{
 
     public void takeMessages(Date time) throws Exception {
         folder.fetch(msgs, new FetchProfile());
-        //Evelope creation
+        //Envelope creation
         envelopes = new Envelope[msgs.length];
         for(int i = 0; i < msgs.length; i++)
             envelopes[i] = convertEnvelope(msgs[i], time);
@@ -94,28 +95,24 @@ public class POP3Connection extends Server{
         return count;
     }*/
     
-    public void markAsRead(int ID){
+    /*public void markAsRead(int ID){
         try {
             msgs[ID].setFlag(Flags.Flag.SEEN, true);
         } catch (MessagingException ex) {
             Logger.getLogger(POP3Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }*/
     
     public void deleteMessages(int[] mailIDs){
         //deletion of chosen ids
         for(int i = 0; i < mailIDs.length; i++)
-            deleteEnvelope(mailIDs[i]);
+            deleteMessage(mailIDs[i]);
     }
     
     public void deleteMessage(int mailID){
         //deletion of chosen id
-        deleteEnvelope(mailID);
-    }
-    
-    private void deleteEnvelope(int ID){
         try {
-            msgs[ID].setFlag(Flags.Flag.DELETED, true);
+            msgs[mailID].setFlag(Flags.Flag.DELETED, true);
         } catch (MessagingException ex) {
             Logger.getLogger(POP3Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -124,6 +121,7 @@ public class POP3Connection extends Server{
     private static Envelope convertEnvelope(Message m, Date time) throws Exception {
         //Body variable which holds body of mail
         String body="";
+        //Useless
         //Is HTML variable
         Boolean html = false;
         //Folder varible which holds folder info of envelope
@@ -159,9 +157,10 @@ public class POP3Connection extends Server{
         String subject= m.getSubject();
         //Date initialization 
         Date dateofMail= m.getSentDate();
-        //To return null because this mail has been taken before
+        //To return null because this mail will be handled after this process
         if ( time.after(dateofMail) )
             return null;
+        //To take whole mail
         Object content = m.getContent();
         //If instance of mail content is Just String
         if(content instanceof String){

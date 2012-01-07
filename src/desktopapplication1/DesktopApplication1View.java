@@ -31,6 +31,7 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.Timer;
 import javax.swing.Icon;
@@ -110,7 +111,7 @@ public class DesktopApplication1View extends FrameView {
         try {
             p.connect();
             p.openFolder("INBOX");
-            p.takeAllMessages();
+            p.takeMessages(new Date(2011, 01, 02));
             envlopes = p.getEnvlopes();
             p.closeFolder();
             p.disconnect();
