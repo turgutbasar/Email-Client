@@ -147,6 +147,8 @@ public class DesktopApplication1View extends FrameView {
         receivedBoxPanel = new JPanel();
         jScrollPane1 = new JScrollPane();
         receivedList = new JList();
+        jButton1 = new JButton();
+        jButton2 = new JButton();
         sentBoxPanel = new JPanel();
         jScrollPane2 = new JScrollPane();
         sentList = new JList();
@@ -221,20 +223,37 @@ public class DesktopApplication1View extends FrameView {
         receivedList.setName("receivedList"); // NOI18N
         jScrollPane1.setViewportView(receivedList);
 
+        jButton1.setAction(actionMap.get("showShowMailDialog")); // NOI18N
+        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setName("jButton1"); // NOI18N
+
+        jButton2.setAction(actionMap.get("onClickDeleteMailButton")); // NOI18N
+        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
+        jButton2.setName("jButton2"); // NOI18N
+
         GroupLayout receivedBoxPanelLayout = new GroupLayout(receivedBoxPanel);
         receivedBoxPanel.setLayout(receivedBoxPanelLayout);
         receivedBoxPanelLayout.setHorizontalGroup(
             receivedBoxPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addGroup(receivedBoxPanelLayout.createSequentialGroup()
+            .addGroup(Alignment.TRAILING, receivedBoxPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
+                .addGroup(receivedBoxPanelLayout.createParallelGroup(Alignment.TRAILING)
+                    .addComponent(jScrollPane1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
+                    .addGroup(receivedBoxPanelLayout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
                 .addContainerGap())
         );
         receivedBoxPanelLayout.setVerticalGroup(
             receivedBoxPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addGroup(receivedBoxPanelLayout.createSequentialGroup()
+            .addGroup(Alignment.TRAILING, receivedBoxPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                .addPreferredGap(ComponentPlacement.RELATED)
+                .addGroup(receivedBoxPanelLayout.createParallelGroup(Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap())
         );
 
@@ -319,9 +338,7 @@ public class DesktopApplication1View extends FrameView {
                             .addGroup(contactsPanelLayout.createSequentialGroup()
                                 .addGroup(contactsPanelLayout.createParallelGroup(Alignment.LEADING, false)
                                     .addComponent(nameLabel)
-                                    .addGroup(contactsPanelLayout.createSequentialGroup()
-                                        .addComponent(emailLabel)
-                                        .addPreferredGap(ComponentPlacement.RELATED, 3, Short.MAX_VALUE)))
+                                    .addComponent(emailLabel))
                                 .addGap(20, 20, 20)
                                 .addGroup(contactsPanelLayout.createParallelGroup(Alignment.LEADING)
                                     .addComponent(addContactNameTextField, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
@@ -460,7 +477,7 @@ public class DesktopApplication1View extends FrameView {
     }// </editor-fold>//GEN-END:initComponents
 
     @Action
-    public void showSettings() {
+    public void showSettingsDialog() {
         if (settingsPanel == null) {
             JFrame mainFrame = DesktopApplication1.getApplication().getMainFrame();
             settingsPanel = new SettingsDialog(mainFrame);
@@ -551,6 +568,27 @@ public class DesktopApplication1View extends FrameView {
         
         contactsFileTextField.setText(fileChooser.getSelectedFile().getPath());
     }
+
+    @Action
+    public void onClickDeleteMailButton() {
+        //TODO: Delete mail
+    }
+
+    @Action
+    public void showShowMailDialog() {
+        
+        //TODO: Get indices and send showMailDialog constructor
+        
+        int [] indices = receivedList.getSelectedIndices();
+        
+        if (showMailPanel == null) {
+            JFrame mainFrame = DesktopApplication1.getApplication().getMainFrame();
+            showMailPanel = new ShowMailDialog(mainFrame, true);
+            showMailPanel.setLocationRelativeTo(mainFrame);
+        }
+        DesktopApplication1.getApplication().show(showMailPanel);
+        
+    }
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JTabbedPane TabbedPane;
@@ -565,6 +603,8 @@ public class DesktopApplication1View extends FrameView {
     private JButton deleteContactsButton;
     private JMenu editMenu;
     private JLabel emailLabel;
+    private JButton jButton1;
+    private JButton jButton2;
     private JScrollPane jScrollPane1;
     private JScrollPane jScrollPane2;
     private JScrollPane jScrollPane3;
@@ -594,6 +634,8 @@ public class DesktopApplication1View extends FrameView {
     private JDialog aboutBox;
     private JDialog settingsPanel;
     private JDialog newMailPanel;
+    private JDialog showMailPanel;
+    
     private DefaultListModel contactsListModel;
 
     private javax.swing.JFileChooser fileChooser;
