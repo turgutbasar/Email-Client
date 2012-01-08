@@ -381,13 +381,13 @@ public class SettingsDialog extends javax.swing.JDialog {
     }
 
     @Action
-    public void callFileChooser( JTextField textField ) {
+    public void callFileChooser( JTextField textField, int fileType ) {
             int result;
          
         fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new java.io.File("."));
         fileChooser.setDialogTitle("chooserTitle");
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        fileChooser.setFileSelectionMode(fileType);
         
         //
         // disable the "All files" option.
@@ -409,17 +409,17 @@ public class SettingsDialog extends javax.swing.JDialog {
 
     @Action
     public void onClickMailsLocationButton() {
-        callFileChooser(mailsLocationTextField);
+        callFileChooser(mailsLocationTextField, JFileChooser.DIRECTORIES_ONLY);
     }
 
     @Action
     public void onClickContactsLocationButton() {
-        callFileChooser(contactsLocationTextField);
+        callFileChooser(contactsLocationTextField, JFileChooser.FILES_ONLY);
     }
 
     @Action
     public void onClickSettingsLocationButton() {
-        callFileChooser(settingsLocationTextField);
+        callFileChooser(settingsLocationTextField, JFileChooser.FILES_ONLY);
     }
 
 

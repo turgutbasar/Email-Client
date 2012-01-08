@@ -13,7 +13,7 @@
               <Component id="topPanel" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                  <Component id="TabbedPane" pref="740" max="32767" attributes="0"/>
+                  <Component id="TabbedPane" pref="761" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -23,7 +23,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="topPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="TabbedPane" pref="510" max="32767" attributes="0"/>
+                  <Component id="TabbedPane" pref="508" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -42,7 +42,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="mailLabel" min="-2" pref="186" max="-2" attributes="0"/>
-                      <EmptySpace pref="479" max="32767" attributes="0"/>
+                      <EmptySpace pref="500" max="32767" attributes="0"/>
                       <Component id="newMailButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -106,7 +106,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="715" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="736" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -115,7 +115,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="460" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="458" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -161,7 +161,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="715" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="736" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -170,7 +170,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="460" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="458" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -220,39 +220,42 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jScrollPane3" alignment="0" pref="715" max="32767" attributes="1"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane3" alignment="0" pref="736" max="32767" attributes="2"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace pref="3" max="32767" attributes="1"/>
+                                              </Group>
                                           </Group>
                                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="addContactTextField" max="32767" attributes="1"/>
-                                              <Component id="jTextField1" alignment="0" min="-2" pref="158" max="-2" attributes="1"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="addContactNameTextField" pref="158" max="32767" attributes="2"/>
+                                              <Component id="addContactEmailTextField" alignment="0" pref="158" max="32767" attributes="2"/>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="addContactButton" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                          <Component id="addContactButton" pref="93" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="deleteContactsButton" max="32767" attributes="1"/>
+                                      <Component id="deleteContactsButton" pref="308" max="32767" attributes="2"/>
                                   </Group>
-                                  <EmptySpace pref="134" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="contactsFileTextField" min="-2" pref="246" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="contactsFileTextField" pref="238" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
                                           <Component id="contactsFileLocationButton" min="-2" pref="21" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="contactsFileLoadButton" pref="273" max="32767" attributes="1"/>
+                                      <Component id="contactsFileLoadButton" pref="265" max="32767" attributes="2"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -260,28 +263,33 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane3" pref="379" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" pref="375" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="contactsFileTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="contactsFileLocationButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="deleteContactsButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="contactsFileLoadButton" max="32767" attributes="1"/>
-                              <Component id="addContactButton" alignment="0" pref="46" max="32767" attributes="1"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="contactsFileLocationButton" min="-2" max="-2" attributes="0"/>
+                                      <Component id="contactsFileTextField" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="addContactTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="contactsFileLoadButton" min="-2" pref="48" max="-2" attributes="1"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="deleteContactsButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="addContactButton" alignment="0" pref="46" max="32767" attributes="1"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="addContactNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="addContactEmailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -320,6 +328,39 @@
                     <Property name="name" type="java.lang.String" value="deleteContactsButton" noResource="true"/>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JLabel" name="nameLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="nameLabel.text"/>
+                    <Property name="name" type="java.lang.String" value="nameLabel" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="addContactNameTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="addContactNameTextField.text"/>
+                    <Property name="name" type="java.lang.String" value="addContactNameTextField" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="emailLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="emailLabel.text"/>
+                    <Property name="name" type="java.lang.String" value="emailLabel" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="addContactEmailTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="addContactEmailTextField.text"/>
+                    <Property name="name" type="java.lang.String" value="addContactEmailTextField" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="addContactButton">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="desktopapplication1.DesktopApplication1View" id="onClickAddContactsButton" methodName="onClickAddContactsButton"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" resourceKey="addContactButton.text"/>
+                    <Property name="name" type="java.lang.String" value="addContactButton" noResource="true"/>
+                  </Properties>
+                </Component>
                 <Component class="javax.swing.JTextField" name="contactsFileTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" resourceKey="contactsFileTextField.text"/>
@@ -328,44 +369,20 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="contactsFileLocationButton">
                   <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="desktopapplication1.DesktopApplication1View" id="callFileChooser" methodName="callFileChooser"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" resourceKey="contactsFileLocationButton.text"/>
                     <Property name="name" type="java.lang.String" value="contactsFileLocationButton" noResource="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="contactsFileLoadButton">
                   <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="desktopapplication1.DesktopApplication1View" id="onClickLoadContactFromFileButton" methodName="onClickLoadContactFromFileButton"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" resourceKey="contactsFileLoadButton.text"/>
                     <Property name="name" type="java.lang.String" value="contactsFileLoadButton" noResource="true"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="addContactButton">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" resourceKey="addContactButton.text"/>
-                    <Property name="name" type="java.lang.String" value="addContactButton" noResource="true"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="addContactTextField">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" resourceKey="addContactTextField.text"/>
-                    <Property name="name" type="java.lang.String" value="addContactTextField" noResource="true"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" resourceKey="jTextField1.text"/>
-                    <Property name="name" type="java.lang.String" value="jTextField1" noResource="true"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
-                    <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel2">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" resourceKey="jLabel2.text"/>
-                    <Property name="name" type="java.lang.String" value="jLabel2" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -456,11 +473,11 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="statusPanelSeparator" alignment="0" pref="760" max="32767" attributes="0"/>
+              <Component id="statusPanelSeparator" alignment="0" pref="781" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="590" max="32767" attributes="0"/>
+                  <EmptySpace pref="611" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>
@@ -545,6 +562,6 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-124,0,0,2,-8"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-128,0,0,3,13"/>
   </AuxValues>
 </Form>

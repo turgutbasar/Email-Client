@@ -52,6 +52,10 @@ public class Contacts {
         
     }
     
+    public void readFromExternalContacsFile( String fileLocation ) {
+        
+    }
+    
     private Contact [] contacts;
     
 }
