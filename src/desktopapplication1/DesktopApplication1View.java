@@ -106,18 +106,8 @@ public class DesktopApplication1View extends FrameView {
         updateContacts();
 
         //////////////////////////
-        POP3Connection p = new POP3Connection(DesktopApplication1.config.getPOP3Host(),Integer.parseInt(DesktopApplication1.config.getPOP3Port()),DesktopApplication1.config.getFrom(),DesktopApplication1.config.getPass());
-        Envelope[] envlopes = null;
-        try {
-            p.connect();
-            p.openFolder("INBOX");
-            p.takeMessages(new Date(2011, 01, 02));
-            envlopes = p.getEnvlopes();
-            p.closeFolder();
-            p.disconnect();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+        MailFolder recieved = new MailFolder("recieved");
+        recieved.fillFolder();
         //////////////////////////
     }
 

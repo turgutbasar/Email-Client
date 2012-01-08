@@ -45,7 +45,7 @@ public class POP3Connection extends Server{
     }
     
     public void openFolder(String folderName) throws Exception {
-        //Creates Folder object and ties it to folder
+        //Creates MailFolder object and ties it to folder
         folder = store.getFolder(folderName);
         if(folder == null)
             throw new Exception("Invalid folder Exception");
@@ -159,7 +159,7 @@ public class POP3Connection extends Server{
         Date dateofMail= m.getSentDate();
         //To return null because this mail will be handled after this process
         if ( time.after(dateofMail) )
-            return null;
+            return new Envelope(null, null, false, null, null, null, null, dateofMail);
         //To take whole mail
         Object content = m.getContent();
         //If instance of mail content is Just String
@@ -188,7 +188,7 @@ public class POP3Connection extends Server{
                 }
             }
         }
-        return new Envelope(subject, body, html, folder, from, cc, to);
+        return new Envelope(subject, body, html, folder, from, cc, to, dateofMail);
     }
     
     public Envelope[] getEnvlopes() {

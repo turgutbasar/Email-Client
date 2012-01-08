@@ -6,6 +6,8 @@ package desktopapplication1;
 
 import java.util.*;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -24,15 +26,17 @@ public class Configuration {
             Properties configFile = new Properties();
             //Taking properties from settings file
             configFile.load(new FileInputStream(getFileLocation()));
-            setSMTPHost(configFile.getProperty("SMTP_Host"));
-            setSMTPPort(configFile.getProperty("SMTP_Port"));
-            setPOP3Host(configFile.getProperty("POP3_Host"));
-            setPOP3Port(configFile.getProperty("POP3_Port"));
-            setFrom(configFile.getProperty("From"));
-            setPass(configFile.getProperty("Password"));
-            setName(configFile.getProperty("Name"));
-            setMailsLocation(configFile.getProperty("Mails_Location"));
-            setContactsLocation(configFile.getProperty("Contacts_Location"));
+            SMTPHost = configFile.getProperty("SMTP_Host");
+            SMTPPort = configFile.getProperty("SMTP_Port");
+            POP3Host = configFile.getProperty("POP3_Host");
+            POP3Port = configFile.getProperty("POP3_Port");
+            from = configFile.getProperty("From");
+            pass = configFile.getProperty("Password");
+            name = configFile.getProperty("Name");
+            mailsLocation = configFile.getProperty("Mails_Location");
+            contactsLocation = configFile.getProperty("Contacts_Location");
+            DateFormat df = new SimpleDateFormat("yyyy/MM/dd-HH-mm-ss");
+            lastUpdate = df.parse(configFile.getProperty("Last_Update"));
         } catch (Exception e) {
             System.out.println("Read Exception:" + e.getMessage());
         }
@@ -51,6 +55,7 @@ public class Configuration {
             configFile.put("Name", name);
             configFile.put("Mails_Location", mailsLocation);
             configFile.put("Contacts_Location", contactsLocation);
+            configFile.put("Last_Update", Integer.toString(lastUpdate.getYear()+1900)+"/"+Integer.toString(lastUpdate.getMonth())+"/"+Integer.toString(lastUpdate.getDay())+"-"+Integer.toString(lastUpdate.getHours())+"-"+Integer.toString(lastUpdate.getMinutes())+"-"+Integer.toString(lastUpdate.getSeconds()));
             FileOutputStream out = new FileOutputStream(fileLocation);
             configFile.save(out, "properties updated");
         }
@@ -164,6 +169,14 @@ public class Configuration {
         this.pass = pass;
     }
     
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+    
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+    
     private String SMTPHost;
     private String SMTPPort;
     private String POP3Host;
@@ -176,5 +189,6 @@ public class Configuration {
     private String mailsLocation;
     private String contactsLocation;
     final private String permanentFL = "File_MailClient.dat";
+    private Date lastUpdate;
 
 }

@@ -3,13 +3,15 @@
  */
 package desktopapplication1;
 
+import java.util.Date;
+
 /**
  *
  * @author kursat and TheCodeGuru
  */
 public class Envelope {
 
-    public Envelope(String subject, String body, Boolean isHtml, String folder, String[] from, String[] cc, String[] to) {
+    public Envelope(String subject, String body, Boolean isHtml, String folder, String[] from, String[] cc, String[] to, Date date) {
         this.subject = subject;
         this.body = body;
         this.isHtml = isHtml;
@@ -17,6 +19,7 @@ public class Envelope {
         this.from = from;
         this.cc = cc;
         this.to = to;
+        this.date = date;
     }
         
     public String getBody() {
@@ -54,4 +57,9 @@ public class Envelope {
     private String[] from;
     private String[] cc;
     private String[] to;
+
+    public Date getDate() {
+        return date;
+    }
+    private Date date;
 }
