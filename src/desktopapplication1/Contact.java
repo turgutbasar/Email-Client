@@ -10,6 +10,11 @@ package desktopapplication1;
  */
 public class Contact {
 
+    public Contact() {
+        this.email = "";
+        this.name = "";
+    }
+
     public Contact(String email, String name) {
         this.email = email;
         this.name = name;

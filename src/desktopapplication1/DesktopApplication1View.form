@@ -440,7 +440,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="settingsMenuItem">
               <Properties>
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="desktopapplication1.DesktopApplication1View" id="showSettings" methodName="showSettings"/>
+                  <action class="desktopapplication1.DesktopApplication1View" id="showSettingsDialog" methodName="showSettingsDialog"/>
                 </Property>
                 <Property name="text" type="java.lang.String" resourceKey="settingsMenuItem.text"/>
                 <Property name="name" type="java.lang.String" value="settingsMenuItem" noResource="true"/>

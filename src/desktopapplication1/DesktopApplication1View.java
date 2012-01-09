@@ -105,8 +105,8 @@ public class DesktopApplication1View extends FrameView {
         updateContacts();
 
         //////////////////////////
-        MailFolder recieved = new MailFolder("recieved");
-        recieved.fillFolder();
+//        MailFolder recieved = new MailFolder("recieved");
+//        recieved.fillFolder();
         //////////////////////////
     }
 
@@ -400,7 +400,7 @@ public class DesktopApplication1View extends FrameView {
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
-        settingsMenuItem.setAction(actionMap.get("showSettings")); // NOI18N
+        settingsMenuItem.setAction(actionMap.get("showSettingsDialog")); // NOI18N
         settingsMenuItem.setText(resourceMap.getString("settingsMenuItem.text")); // NOI18N
         settingsMenuItem.setName("settingsMenuItem"); // NOI18N
         fileMenu.add(settingsMenuItem);
