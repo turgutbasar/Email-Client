@@ -1,194 +1,165 @@
 /*
- * This class is used for hold info which taken from settings.ini
- * and it holds a permanent file to know location of settings.ini.
+ * This class is used for hold info which taken from settings.ini.
+ * This class is an implementation of IPersistable interface.
  */
-package desktopapplication1;
+
+package org.bizsoft.emailclient.backend;
 
 import java.util.*;
 import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import org.bizsoft.emailclient.backend.persistance.IPersistable;
 
 /**
  *
- * @author kursadyo and TheCodeGuru
+ * @author kursadyo and turgutbasar
  */
-public class Configuration {
 
-    public Configuration() {
-        getFileLocationFromFile();
-        readConfiguration();
+public final class Settings implements IPersistable {
+
+    private String mSMTPHost;
+    private String mSMTPPort;
+    private String mPOP3Host;
+    private String mPOP3Port;
+    private String mFrom;
+    private String mPass;
+    private String mName;
+    private String mMailsLocation;
+    private String mContactsLocation;
+    private Date mLastUpdate;
+    private final String settingsFile = "settings.ini"; 
+    
+    public Settings() {
     }
 
-    public void readConfiguration () {
-
+    public boolean read() {
         try {
             Properties configFile = new Properties();
             //Taking properties from settings file
-            configFile.load(new FileInputStream(getFileLocation()));
-            SMTPHost = configFile.getProperty("SMTP_Host");
-            SMTPPort = configFile.getProperty("SMTP_Port");
-            POP3Host = configFile.getProperty("POP3_Host");
-            POP3Port = configFile.getProperty("POP3_Port");
-            from = configFile.getProperty("From");
-            pass = configFile.getProperty("Password");
-            name = configFile.getProperty("Name");
-            mailsLocation = configFile.getProperty("Mails_Location");
-            contactsLocation = configFile.getProperty("Contacts_Location");
+            configFile.load(new FileInputStream(settingsFile));
+            mSMTPHost = configFile.getProperty("SMTP_Host");
+            mSMTPPort = configFile.getProperty("SMTP_Port");
+            mPOP3Host = configFile.getProperty("POP3_Host");
+            mPOP3Port = configFile.getProperty("POP3_Port");
+            mFrom = configFile.getProperty("From");
+            mPass = configFile.getProperty("Password");
+            mName = configFile.getProperty("Name");
+            mMailsLocation = configFile.getProperty("Mails_Location");
+            mContactsLocation = configFile.getProperty("Contacts_Location");
             DateFormat df = new SimpleDateFormat("yyyy/MM/dd-HH-mm-ss");
-            lastUpdate = df.parse(configFile.getProperty("Last_Update"));
+            mLastUpdate = df.parse(configFile.getProperty("Last_Update"));
         } catch (Exception e) {
             System.out.println("Read Exception:" + e.getMessage());
+            return false;
         }
+        return true;
     }
 
-    public void writeConfiguration () {
+    public boolean write() {
         try {
             Properties configFile = new Properties();
-            configFile.load(new FileInputStream(fileLocation));
-            configFile.put("SMTP_Host", SMTPHost);
-            configFile.put("SMTP_Port", SMTPPort);
-            configFile.put("POP3_Host", POP3Host);
-            configFile.put("POP3_Port", POP3Port);
-            configFile.put("From", from);
-            configFile.put("Password", pass);
-            configFile.put("Name", name);
-            configFile.put("Mails_Location", mailsLocation);
-            configFile.put("Contacts_Location", contactsLocation);
-            configFile.put("Last_Update", Integer.toString(lastUpdate.getYear()+1900)+"/"+Integer.toString(lastUpdate.getMonth())+"/"+Integer.toString(lastUpdate.getDay())+"-"+Integer.toString(lastUpdate.getHours())+"-"+Integer.toString(lastUpdate.getMinutes())+"-"+Integer.toString(lastUpdate.getSeconds()));
-            FileOutputStream out = new FileOutputStream(fileLocation);
+            configFile.load(new FileInputStream(settingsFile));
+            configFile.put("SMTP_Host", mSMTPHost);
+            configFile.put("SMTP_Port", mSMTPPort);
+            configFile.put("POP3_Host", mPOP3Host);
+            configFile.put("POP3_Port", mPOP3Port);
+            configFile.put("From", mFrom);
+            configFile.put("Password", mPass);
+            configFile.put("Name", mName);
+            configFile.put("Mails_Location", mMailsLocation);
+            configFile.put("Contacts_Location", mContactsLocation);
+            // TODO : There are some wrong and deprecated usage of date formatting, fix it.
+            configFile.put("Last_Update", Integer.toString(mLastUpdate.getYear()+1900)+"/"+Integer.toString(mLastUpdate.getMonth())+"/"+Integer.toString(mLastUpdate.getDay())+"-"+Integer.toString(mLastUpdate.getHours())+"-"+Integer.toString(mLastUpdate.getMinutes())+"-"+Integer.toString(mLastUpdate.getSeconds()));
+            FileOutputStream out = new FileOutputStream(settingsFile);
+            // TODO : There is a usage of ini save method that deprecated.
             configFile.save(out, "properties updated");
         }
         catch (Exception e) {
             System.out.println("Write Exception:" + e.getMessage());
+            return false;
         }
-    }
-    
-    private void setFileLocationToFile(){   
-        try {
-            Properties configFile = new Properties();
-            configFile.load(new FileInputStream(permanentFL));
-            configFile.put("File", fileLocation);
-            FileOutputStream out = new FileOutputStream(permanentFL);
-            configFile.save(out, "properties updated");
-        }
-        catch (Exception e) {
-            System.out.println("Set File Location To File Exception:" + e.getMessage());
-        }
-    }
-    
-    private void getFileLocationFromFile(){     
-        try {
-            Properties configFile = new Properties();
-            configFile.load(new FileInputStream(permanentFL));
-            setFileLocation(configFile.getProperty("File"));
-        }
-        catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-    
-    public String getFileLocation() {
-        return fileLocation;
-    }
-
-    public void setFileLocation(String fileLocation) {
-        this.fileLocation = fileLocation;
-        setFileLocationToFile();
-    }
-
-    public String getPOP3Host() {
-        return POP3Host;
-    }
-
-    public String getPOP3Port() {
-        return POP3Port;
+        return true;
     }
 
     public String getSMTPHost() {
-        return SMTPHost;
-    }
-
-    public String getSMTPPort() {
-        return SMTPPort;
-    }
-
-    public String getContactsLocation() {
-        return contactsLocation;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public String getMailsLocation() {
-        return mailsLocation;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPOP3Host(String POP3Host) {
-        this.POP3Host = POP3Host;
-    }
-
-    public void setPOP3Port(String POP3Port) {
-        this.POP3Port = POP3Port;
+        return mSMTPHost;
     }
 
     public void setSMTPHost(String SMTPHost) {
-        this.SMTPHost = SMTPHost;
+        this.mSMTPHost = SMTPHost;
+    }
+
+    public String getSMTPPort() {
+        return mSMTPPort;
     }
 
     public void setSMTPPort(String SMTPPort) {
-        this.SMTPPort = SMTPPort;
+        this.mSMTPPort = SMTPPort;
     }
 
-    public void setContactsLocation(String contactsLocation) {
-        this.contactsLocation = contactsLocation;
+    public String getPOP3Host() {
+        return mPOP3Host;
+    }
+
+    public void setPOP3Host(String POP3Host) {
+        this.mPOP3Host = POP3Host;
+    }
+
+    public String getPOP3Port() {
+        return mPOP3Port;
+    }
+
+    public void setPOP3Port(String POP3Port) {
+        this.mPOP3Port = POP3Port;
+    }
+
+    public String getFrom() {
+        return mFrom;
     }
 
     public void setFrom(String from) {
-        this.from = from;
+        this.mFrom = from;
     }
 
-    public void setMailsLocation(String mailsLocation) {
-        this.mailsLocation = mailsLocation;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public String getPass() {
+        return mPass;
     }
 
     public void setPass(String pass) {
-        this.pass = pass;
+        this.mPass = pass;
     }
-    
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-    
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-    
-    private String SMTPHost;
-    private String SMTPPort;
-    private String POP3Host;
-    private String POP3Port;
-    private String from;
-    private String pass;
-    private String name;
-    //These will hold the variable location of files
-    private String fileLocation;
-    private String mailsLocation;
-    private String contactsLocation;
-    final private String permanentFL = "File_MailClient.dat";
-    private Date lastUpdate;
 
+    public String getName() {
+        return mName;
+    }
+
+    public void setName(String name) {
+        this.mName = name;
+    }
+
+    public String getMailsLocation() {
+        return mMailsLocation;
+    }
+
+    public void setMailsLocation(String mailsLocation) {
+        this.mMailsLocation = mailsLocation;
+    }
+
+    public String getContactsLocation() {
+        return mContactsLocation;
+    }
+
+    public void setContactsLocation(String contactsLocation) {
+        this.mContactsLocation = contactsLocation;
+    }
+
+    public Date getLastUpdate() {
+        return mLastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.mLastUpdate = lastUpdate;
+    }
+    
 }

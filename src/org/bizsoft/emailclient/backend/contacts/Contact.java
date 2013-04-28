@@ -1,42 +1,43 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * This class is designed to model a basic contact information.
  */
-package desktopapplication1;
+
+package org.bizsoft.emailclient.backend.contacts;
 
 /**
  *
- * @author kursat
+ * @author kursat and turgutbasar
  */
+
 public class Contact {
+    
+    private String mEmail;
+    private String mName;
 
     public Contact() {
-        this.email = "";
-        this.name = "";
+        mEmail = "";
+        mName = "";
     }
 
     public Contact(String email, String name) {
-        this.email = email;
-        this.name = name;
+        mEmail = email;
+        mName = name;
     }
 
     public String getEmail() {
-        return email;
+        return mEmail;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        mEmail = email;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        mName = name;
     }
-    
-    private String email;
-    private String name;
-    
+      
 }

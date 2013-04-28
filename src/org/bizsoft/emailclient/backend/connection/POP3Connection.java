@@ -3,7 +3,8 @@
  * and implement some utility for POP3(take messages, delete message, get mails 
  * count, get new mails count)
  */
-package desktopapplication1;
+
+package org.bizsoft.emailclient.backend.connection;
 
 import com.sun.mail.pop3.POP3SSLStore;
 import java.util.*;
@@ -11,18 +12,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.*;
 import javax.mail.internet.MimeBodyPart;
+import org.bizsoft.emailclient.EmailClient;
+import org.bizsoft.emailclient.backend.mail.Envelope;
 
 /**
  *
  * @author kursat and TheCodeGuru
  */
-public class POP3Connection extends Server{
 
-    public POP3Connection(String hostname, int port, String from, String password) {
+public class POP3Connection extends AbstractConnection{
+
+    public POP3Connection(String hostname, int port, String user, String password) {
         //To fill properties with default values
-        super(hostname, port);
-        this.from = from;
-        this.password = password;
+        super(hostname, port, user, password);
         session = null;
         store = null;
         msgs = null;
@@ -36,11 +38,11 @@ public class POP3Connection extends Server{
         props.setProperty("mail.pop3.port", Integer.toString(getPort()));
         props.setProperty("mail.pop3.socketFactory.port", Integer.toString(getPort()));
         //Creates URL for connection
-        url = new URLName("pop3", getHost(), getPort(), "", from, password);
+        url = new URLName("pop3", getHost(), getPort(), "", mUserMail, password);
         //Creates session
         session = Session.getInstance(props, null);
         store = new POP3SSLStore(session, url);
-        //Connects to POP3 Server
+        //Connects to POP3 AbstractConnection
         store.connect();
     }
     
@@ -131,7 +133,7 @@ public class POP3Connection extends Server{
         String[] from = new String[m.getFrom().length];
         for ( int i = 0 ; i  < from.length; ++i ){
             from[i] = m.getFrom()[i].toString();
-            if ( from[i].contains(DesktopApplication1.config.getFrom()) ){
+            if ( from[i].contains(EmailClient.config.getFrom()) ){
                 folder = "SENT";
             }
         }
@@ -139,7 +141,7 @@ public class POP3Connection extends Server{
         String[] to = new String[m.getRecipients(Message.RecipientType.TO).length];
         for ( int i = 0 ; i  < to.length; ++i ){
             to[i] = m.getRecipients(Message.RecipientType.TO)[i].toString();
-            if ( to[i].contains(DesktopApplication1.config.getFrom()) && folder.compareTo("SENT") == 0){
+            if ( to[i].contains(EmailClient.config.getFrom()) && folder.compareTo("SENT") == 0){
                 folder = "BOTH";
             }
         }
@@ -149,7 +151,7 @@ public class POP3Connection extends Server{
             cc = new String[m.getRecipients(Message.RecipientType.CC).length];
             for ( int i = 0 ; i  < cc.length; ++i ){
                 cc[i] = m.getRecipients(Message.RecipientType.CC)[i].toString();
-                if ( cc[i].contains(DesktopApplication1.config.getFrom()) && folder.compareTo("SENT") == 0)
+                if ( cc[i].contains(EmailClient.config.getFrom()) && folder.compareTo("SENT") == 0)
                     folder = "BOTH";
             }
         }
@@ -204,7 +206,6 @@ public class POP3Connection extends Server{
     public static Writer output = null;*/
     URLName url;
     /*public static String receiving_attachments="D:\\download";*/
-    private String from;
     private Envelope[] envelopes;
     private Message[] msgs;
     

@@ -1,8 +1,8 @@
 /*
  * This class implements SMTP connection
- * from Server abstract class.
+ * from AbstractConnection abstract class.
  */
-package desktopapplication1;
+package org.bizsoft.emailclient.backend.connection;
 
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -10,29 +10,30 @@ import java.util.*;
 
 /**
  *
- * @author kursat and TheCodeGuru
+ * @author kursat and turgutbasar
  */
-public class SMTPConnection extends Server{
 
-    public SMTPConnection(String hostname, int port, String from, String password) {
-        super(hostname, port);
-        this.from = from;
-        this.password = password;
+public class SMTPConnection extends AbstractConnection{
+
+    public SMTPConnection(String hostname, int port, String user, String password) {
+        super(hostname, port, user, password);
     }
     
-    public void sendMail (String subject, String text, String[] to, String [] cc) {
+    public void sendMail(String subject, String text, String[] to, String [] cc) {
         try {
             Properties props = System.getProperties();
-            props.put("mail.smtp.host", this.getHost());
-            props.put("mail.smtp.user", from);
-            props.put("mail.smtp.password", password);
-            props.put("mail.smtp.port", this.getPort());            
+            props.put("mail.smtp.host", mHost);
+            props.put("mail.smtp.user", mUserMail);
+            props.put("mail.smtp.password", mPassword);
+            props.put("mail.smtp.port", mPort);            
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.starttls.enable", "true");
+            
             Session session = Session.getDefaultInstance(props, null);
             session.setDebug(true);
+            
             MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(from));
+            message.setFrom(new InternetAddress(mUserMail));
             // To get the array of TO addresses
             InternetAddress[] toAddresses = new InternetAddress[to.length];
             for( int i=0; i < to.length; i++ ) { 
@@ -54,23 +55,12 @@ public class SMTPConnection extends Server{
             message.setSubject(subject);
             message.setText(text);
             Transport transport = session.getTransport("smtp");
-            transport.connect(getHost(), getPort(), from, password);
+            transport.connect(getHost(), getPort(), mUserMail, mPassword);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
         } catch (Exception e) {
             System.out.println( "SendMail Exception:" + e.getMessage());
         }
     }
-    
-    public String getFrom() {
-        return from;
-    }
 
-    public String getPassword() {
-        return password;
-    }
-    
-    private String from;
-    private String password;
-    
 }

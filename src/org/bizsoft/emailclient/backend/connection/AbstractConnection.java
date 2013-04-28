@@ -1,35 +1,55 @@
 /*
  * This class is an abstract class for POP3 and SMTP protocols.
  */
-package desktopapplication1;
+package org.bizsoft.emailclient.backend.connection;
 
 /**
  *
  * @author kursat and TheCodeGuru
  */
-abstract public class Server {
+public abstract class AbstractConnection {
+   
+    protected String mHost;
+    protected int mPort;
+    protected String mUserMail;
+    protected String mPassword;
     
-    public Server(String hostname, int port) {
-        this.host = hostname;
-        this.port = port;
+    public AbstractConnection(String hostname, int port, String user, String password) {
+        mUserMail = user;
+        mPassword = password;
+        mHost = hostname;
+        mPort = port;
     }
 
     public String getHost() {
-        return host;
+        return mHost;
     }
 
-    public void setHost(String hostname) {
-        this.host = hostname;
+    public void setHost(String host) {
+        mHost = host;
     }
 
     public int getPort() {
-        return port;
+        return mPort;
     }
 
     public void setPort(int port) {
-        this.port = port;
+        mPort = port;
     }
-    
-    private String host;
-    private int port;
+
+    public String getPassword() {
+        return mPassword;
+    }
+
+    public void setPassword(String password) {
+        mPassword = password;
+    }
+
+    public String getUserMail() {
+        return mUserMail;
+    }
+
+    public void setUserMail(String userMail) {
+        mUserMail = userMail;
+    }
 }

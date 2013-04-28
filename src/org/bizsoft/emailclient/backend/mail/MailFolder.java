@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package desktopapplication1;
+package org.bizsoft.emailclient.backend.mail;
 
+import org.bizsoft.emailclient.backend.connection.POP3Connection;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -14,6 +15,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import org.bizsoft.emailclient.EmailClient;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
@@ -40,12 +42,12 @@ public class MailFolder {
     
     public void fillFolder(){
         //First of all, we need to take mails from POP3
-        POP3Connection p = new POP3Connection(DesktopApplication1.config.getPOP3Host(),Integer.parseInt(DesktopApplication1.config.getPOP3Port()),DesktopApplication1.config.getFrom(),DesktopApplication1.config.getPass());
+        POP3Connection p = new POP3Connection(EmailClient.config.getPOP3Host(),Integer.parseInt(EmailClient.config.getPOP3Port()),EmailClient.config.getFrom(),EmailClient.config.getPass());
         try {
             p.connect();
             p.openFolder("INBOX");
             //Last Update
-            p.takeMessages(DesktopApplication1.config.getLastUpdate());
+            p.takeMessages(EmailClient.config.getLastUpdate());
             envelopes = p.getEnvlopes();
             p.closeFolder();
             p.disconnect();
@@ -56,7 +58,7 @@ public class MailFolder {
         //Save envelopes to local folder
         for ( int i = 0 ; i < envelopes.length ; ++i ){
             //Date comparison
-            if ( DesktopApplication1.config.getLastUpdate().after(envelopes[i].getDate()))
+            if ( EmailClient.config.getLastUpdate().after(envelopes[i].getDate()))
                 continue;
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder;
@@ -115,7 +117,7 @@ public class MailFolder {
                 TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
 		DOMSource source = new DOMSource(document);
-		StreamResult result = new StreamResult(new File(DesktopApplication1.config.getMailsLocation()+name+"/"+Integer.toString(i)));
+		StreamResult result = new StreamResult(new File(EmailClient.config.getMailsLocation()+name+"/"+Integer.toString(i)));
                 transformer.transform(source, result);
                 
                 
@@ -123,13 +125,13 @@ public class MailFolder {
                 System.out.println("XML Exception : " + ex.getMessage());
             }
             Calendar cal = Calendar.getInstance();
-            DesktopApplication1.config.setLastUpdate(cal.getTime());
-            DesktopApplication1.config.writeConfiguration();
+            EmailClient.config.setLastUpdate(cal.getTime());
+            EmailClient.config.write();
         }
         if (envelopes.length == 0)
             return;
         //And take mails(local part of mails) from local folder
-        File directory = new File(DesktopApplication1.config.getMailsLocation()+name);
+        File directory = new File(EmailClient.config.getMailsLocation()+name);
         String files[] = directory.list();
         int l = 0;
         if ( files != null ){
@@ -161,14 +163,14 @@ public class MailFolder {
                 else{
                     File target = new File(directory+"/"+files[i]);
                     target.delete();
-                    directory = new File(DesktopApplication1.config.getMailsLocation()+name);
+                    directory = new File(EmailClient.config.getMailsLocation()+name);
                 }
             } catch (Exception ex) {
                 System.out.println("XML Exception : " + ex.getMessage());
             }
             Calendar cal = Calendar.getInstance();
-            DesktopApplication1.config.setLastUpdate(cal.getTime());
-            DesktopApplication1.config.writeConfiguration();
+            EmailClient.config.setLastUpdate(cal.getTime());
+            EmailClient.config.write();
         }
     }
     

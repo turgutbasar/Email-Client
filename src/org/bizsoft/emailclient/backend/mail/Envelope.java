@@ -1,7 +1,7 @@
 /*
  * This class used as mail object.
  */
-package desktopapplication1;
+package org.bizsoft.emailclient.backend.mail;
 
 import java.util.Date;
 
