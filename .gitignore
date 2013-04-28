@@ -38,3 +38,11 @@ ehthumbs.db
 Icon?
 Thumbs.db
 /build/
+
+# NbProjet #
+############
+nbproject/**/*
+
+# Project Spesific #
+####################
+mails/**/*
