@@ -2,6 +2,7 @@
  * This class implements SMTP connection
  * from AbstractConnection abstract class.
  */
+
 package org.bizsoft.emailclient.backend.connection;
 
 import javax.mail.*;
@@ -13,7 +14,7 @@ import java.util.*;
  * @author kursat and turgutbasar
  */
 
-public class SMTPConnection extends AbstractConnection{
+public class SMTPConnection extends AbstractConnection {
 
     public SMTPConnection(String hostname, int port, String user, String password) {
         super(hostname, port, user, password);
@@ -34,6 +35,7 @@ public class SMTPConnection extends AbstractConnection{
             
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(mUserMail));
+            
             // To get the array of TO addresses
             InternetAddress[] toAddresses = new InternetAddress[to.length];
             for( int i=0; i < to.length; i++ ) { 

@@ -1,12 +1,14 @@
 /*
  * This class is an abstract class for POP3 and SMTP protocols.
  */
+
 package org.bizsoft.emailclient.backend.connection;
 
 /**
  *
  * @author kursat and TheCodeGuru
  */
+
 public abstract class AbstractConnection {
    
     protected String mHost;

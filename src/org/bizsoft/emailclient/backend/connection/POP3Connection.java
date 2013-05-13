@@ -20,7 +20,18 @@ import org.bizsoft.emailclient.backend.mail.Envelope;
  * @author kursat and TheCodeGuru
  */
 
-public class POP3Connection extends AbstractConnection{
+public class POP3Connection extends AbstractConnection {
+    
+    private Session session;
+    private POP3SSLStore store;
+    private Folder folder;
+    private Message[] msgs;
+    /*public static String numberOfFiles = null;
+    public static int toCheck = 0;
+    public static Writer output = null;*/
+    /*public static String receiving_attachments="D:\\download";*/
+    private Envelope[] envelopes;
+    URLName url;
 
     public POP3Connection(String hostname, int port, String user, String password) {
         //To fill properties with default values
@@ -38,11 +49,11 @@ public class POP3Connection extends AbstractConnection{
         props.setProperty("mail.pop3.port", Integer.toString(getPort()));
         props.setProperty("mail.pop3.socketFactory.port", Integer.toString(getPort()));
         //Creates URL for connection
-        url = new URLName("pop3", getHost(), getPort(), "", mUserMail, password);
+        url = new URLName("pop3", mHost, mPort, "", mUserMail, mPassword);
         //Creates session
         session = Session.getInstance(props, null);
         store = new POP3SSLStore(session, url);
-        //Connects to POP3 AbstractConnection
+        //Connects to POP3
         store.connect();
     }
     
@@ -197,16 +208,6 @@ public class POP3Connection extends AbstractConnection{
         return envelopes;
     }
     
-    private Session session;
-    private POP3SSLStore store;
-    private String password;
-    private Folder folder;
-    /*public static String numberOfFiles = null;
-    public static int toCheck = 0;
-    public static Writer output = null;*/
-    URLName url;
-    /*public static String receiving_attachments="D:\\download";*/
-    private Envelope[] envelopes;
-    private Message[] msgs;
+
     
 }
